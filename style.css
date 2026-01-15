@@ -91,3 +91,63 @@ footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0
 }
 
 .year-block { margin-bottom: 30px; }
+/* Style pour les pages de détails */
+.container-detail {
+    max-width: 900px; /* Plus étroit que l'accueil pour faciliter la lecture du texte */
+    margin: 0 auto;
+    padding: 40px 10%;
+}
+
+.header-detail {
+    margin-bottom: 60px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.content-section {
+    margin-bottom: 50px;
+}
+
+.content-section h2 {
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+/* Style Timeline élégante */
+.timeline {
+    border-left: 2px solid #333;
+    padding-left: 30px;
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+/* Le petit point sur la ligne */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -41px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-color);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+}
+
+.projet-box {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid var(--accent);
+}
