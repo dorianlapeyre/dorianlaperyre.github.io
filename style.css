@@ -59,6 +59,10 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
     border-color: var(--accent);
 }
 
+.center-text {
+    text-align: center;
+}
+
 .card h3 { margin-top: 0; }
 .card a { color: var(--accent); text-decoration: none; font-weight: bold; }
 
