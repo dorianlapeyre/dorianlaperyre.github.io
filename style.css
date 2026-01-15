@@ -41,13 +41,12 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
 #projets { padding: 80px 10%; }
 .grid {
     display: flex;
-    flex-wrap: wrap;        /* Permet de passer à la ligne automatiquement */
-    justify-content: center; /* Centre les cartes si la ligne n'est pas complète */
-    gap: 25px;              /* L'espace entre les cartes */
+    flex-wrap: wrap;
+    justify-content: center; /* C'est ça qui centre la 4ème carte ! */
+    gap: 20px;
     margin-top: 30px;
 }
 
-/* Le style de chaque carte individuelle */
 .card {
     background: var(--card-bg);
     padding: 30px;
@@ -55,10 +54,18 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
     border: 1px solid #333;
     transition: transform 0.3s ease;
     
-    /* C'est ici que l'automatisation se joue : */
-    flex: 0 1 calc(33.333% - 25px); /* Essaye d'en mettre 3 par ligne */
-    min-width: 300px;               /* Si l'écran est petit, elles passent à la ligne */
+    /* Configuration automatique */
+    flex: 1 1 300px;  /* Occupe 300px minimum, et s'étale si besoin */
+    max-width: 350px; /* Limite la largeur pour garder l'aspect "carte" */
     box-sizing: border-box;
+}
+
+/* Force le titre à être centré et prendre toute la largeur */
+.center-text {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card:hover {
@@ -66,9 +73,6 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
     border-color: var(--accent);
 }
 
-.center-text {
-    text-align: center;
-}
 
 .card h3 { margin-top: 0; }
 .card a { color: var(--accent); text-decoration: none; font-weight: bold; }
