@@ -40,13 +40,14 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
 /* Grille de projets */
 #projets { padding: 50px 10%; }
 .grid {
-    display: flex;          /* Utilise Flexbox au lieu de Grid */
-    flex-wrap: wrap;        /* Permet de passer à la ligne */
-    justify-content: center; /* Centre les éléments sur la ligne */
-    gap: 20px;              /* Espace entre les cartes */
+    display: flex;
+    flex-wrap: wrap;        /* Permet de passer à la ligne automatiquement */
+    justify-content: center; /* Centre les cartes si la ligne n'est pas complète */
+    gap: 25px;              /* L'espace entre les cartes */
     margin-top: 30px;
 }
 
+/* Le style de chaque carte individuelle */
 .card {
     background: var(--card-bg);
     padding: 30px;
@@ -54,10 +55,10 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
     border: 1px solid #333;
     transition: transform 0.3s ease;
     
-    /* Calcul pour avoir environ 3 cartes par ligne (33% moins l'espace) */
-    width: calc(33.333% - 20px); 
-    min-width: 300px;       /* Empêche les cartes de devenir trop petites sur mobile */
-    box-sizing: border-box; /* Pour que le padding ne casse pas la largeur */
+    /* C'est ici que l'automatisation se joue : */
+    flex: 0 1 calc(33.333% - 25px); /* Essaye d'en mettre 3 par ligne */
+    min-width: 300px;               /* Si l'écran est petit, elles passent à la ligne */
+    box-sizing: border-box;
 }
 
 .card:hover {
