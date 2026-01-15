@@ -40,9 +40,10 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
 /* Grille de projets */
 #projets { padding: 50px 10%; }
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: flex;          /* Utilise Flexbox au lieu de Grid */
+    flex-wrap: wrap;        /* Permet de passer à la ligne */
+    justify-content: center; /* Centre les éléments sur la ligne */
+    gap: 20px;              /* Espace entre les cartes */
     margin-top: 30px;
 }
 
@@ -52,6 +53,11 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
     border-radius: 12px;
     border: 1px solid #333;
     transition: transform 0.3s ease;
+    
+    /* Calcul pour avoir environ 3 cartes par ligne (33% moins l'espace) */
+    width: calc(33.333% - 20px); 
+    min-width: 300px;       /* Empêche les cartes de devenir trop petites sur mobile */
+    box-sizing: border-box; /* Pour que le padding ne casse pas la largeur */
 }
 
 .card:hover {
