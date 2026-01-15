@@ -78,3 +78,16 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
 .card a { color: var(--accent); text-decoration: none; font-weight: bold; }
 
 footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.9rem; }
+.card-link {
+    text-decoration: none;
+    color: inherit; /* Garde la couleur du texte originale */
+    display: block; /* La zone cliquable prend toute la place de la carte */
+}
+
+.timeline {
+    margin-top: 40px;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+}
+
+.year-block { margin-bottom: 30px; }
