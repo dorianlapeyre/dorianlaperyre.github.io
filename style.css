@@ -179,3 +179,13 @@ section:nth-of-type(even) {
     margin: 15px auto 0;       /* Centrage automatique */
     border-radius: 2px;
 }
+/* S'assure que les cartes gardent leur couleur sombre sur le fond gris */
+section:nth-of-type(even) .card {
+    background: #1a1a1a; /* On force la couleur var(--card-bg) */
+}
+
+/* Optionnel : Ajoute un peu de padding en haut du footer pour qu'il ne colle pas */
+footer {
+    border-top: 1px solid #222;
+    background-color: var(--bg-color);
+}
