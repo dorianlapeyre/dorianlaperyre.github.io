@@ -30,6 +30,8 @@ nav a:hover { color: white; }
 header {
     padding: 100px 10%;
     max-width: 800px;
+    margin: 0 auto;      /* Centre le bloc lui-même */
+    text-align: center;  /* Centre tout le texte à l'intérieur (Titre + Paragraphe) */
 }
 h1 { font-size: 3.5rem; margin-bottom: 10px; }
 .highlight { color: var(--accent); }
