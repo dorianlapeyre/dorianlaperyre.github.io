@@ -12,12 +12,34 @@
         <span class="close-button">&times;</span>
         <h2>Me contacter</h2>
         <div class="contact-links">
-            <a href="mailto:ton-email@exemple.com" class="contact-item">📧 Email</a>
-            <a href="https://linkedin.com/in/ton-profil" target="_blank" class="contact-item">🔗 LinkedIn</a>
-            <a href="https://github.com/ton-pseudo" target="_blank" class="contact-item">💻 GitHub</a>
+            <a href="mailto:dorian.lapeyre69@gmail.com" class="contact-item">📧 Email</a>
+            <a href="www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" class="contact-item">🔗 LinkedIn</a>
+            <a href="https://github.com/dorianlepeyre" target="_blank" class="contact-item">💻 GitHub</a>
         </div>
     </div>
 </div>
+<script>
+    const modal = document.getElementById("contact-modal");
+    const btn = document.getElementById("contact-trigger");
+    const span = document.getElementsByClassName("close-button")[0];
+
+    // Ouvre la modale au clic
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Ferme la modale au clic sur le X
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Ferme la modale si on clique n'importe où en dehors de la fenêtre
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 <body>
 
     <nav>
