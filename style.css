@@ -1,10 +1,10 @@
-/* Variables de couleurs pour un mode sombre élégant */
+/* Variables de couleurs */
 :root {
     --bg-color: #0f0f0f;
     --card-bg: #1a1a1a;
     --text-main: #e0e0e0;
     --text-dim: #a0a0a0;
-    --accent: #4f46e5; /* Bleu discret */
+    --accent: #4f46e5;
 }
 
 body {
@@ -15,34 +15,38 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation */
+/* --- Navigation --- */
 nav {
     display: flex;
     justify-content: space-between;
     padding: 2rem 10%;
     align-items: center;
 }
-
 nav .logo { font-weight: 700; font-size: 1.2rem; }
 nav a { color: var(--text-dim); text-decoration: none; margin-left: 20px; transition: 0.3s; }
 nav a:hover { color: white; }
 
-/* Header */
+/* --- Header --- */
 header {
     padding: 100px 10%;
     max-width: 800px;
 }
-
 h1 { font-size: 3.5rem; margin-bottom: 10px; }
 .highlight { color: var(--accent); }
 header p { font-size: 1.5rem; color: var(--text-dim); }
 
-/* Grille de projets */
-#projets { padding: 80px 10%; }
+/* --- Sections & Grille (Accueil) --- */
+section {
+    padding: 100px 10%; 
+    background-color: var(--bg-color); /* Fond noir forcé */
+    border-top: 1px solid #222;        /* Ligne de séparation */
+}
+section:first-of-type { border-top: none; }
+
 .grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* C'est ça qui centre la 4ème carte ! */
+    justify-content: center;
     gap: 20px;
     margin-top: 30px;
 }
@@ -53,79 +57,54 @@ header p { font-size: 1.5rem; color: var(--text-dim); }
     border-radius: 12px;
     border: 1px solid #333;
     transition: transform 0.3s ease;
-    
-    /* Configuration automatique */
-    flex: 1 1 300px;  /* Occupe 300px minimum, et s'étale si besoin */
-    max-width: 350px; /* Limite la largeur pour garder l'aspect "carte" */
+    flex: 1 1 300px;
+    max-width: 350px;
     box-sizing: border-box;
 }
-
-/* Force le titre à être centré et prendre toute la largeur */
-.center-text {
-    text-align: center;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
 }
+.card-link { text-decoration: none; color: inherit; display: block; }
 
-
-.card h3 { margin-top: 0; }
-.card a { color: var(--accent); text-decoration: none; font-weight: bold; }
-
-footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.9rem; }
-.card-link {
-    text-decoration: none;
-    color: inherit; /* Garde la couleur du texte originale */
-    display: block; /* La zone cliquable prend toute la place de la carte */
+/* --- Titres avec barre bleue --- */
+.center-text {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 60px;
+    font-size: 2.2rem;
+}
+.center-text::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 20px auto 0;
+    border-radius: 2px;
 }
 
-.timeline {
-    margin-top: 40px;
-    border-left: 2px solid var(--accent);
-    padding-left: 20px;
-}
-
-.year-block { margin-bottom: 30px; }
-/* Style pour les pages de détails */
+/* --- Pages de détails (Master, PCSI, etc.) --- */
 .container-detail {
-    max-width: 900px; /* Plus étroit que l'accueil pour faciliter la lecture du texte */
+    max-width: 900px;
     margin: 0 auto;
     padding: 40px 10%;
 }
-
 .header-detail {
     margin-bottom: 60px;
     border-bottom: 1px solid #333;
     padding-bottom: 20px;
 }
+.content-section { margin-bottom: 50px; }
+.content-section h2 { color: var(--accent); margin-bottom: 20px; }
 
-.content-section {
-    margin-bottom: 50px;
-}
-
-.content-section h2 {
-    color: var(--accent);
-    margin-bottom: 20px;
-}
-
-/* Style Timeline élégante */
+/* Timeline élégante */
 .timeline {
     border-left: 2px solid #333;
     padding-left: 30px;
     margin-left: 10px;
 }
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 40px;
-}
-
-/* Le petit point sur la ligne */
+.timeline-item { position: relative; margin-bottom: 40px; }
 .timeline-item::before {
     content: "";
     position: absolute;
@@ -137,13 +116,7 @@ footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0
     border: 2px solid var(--accent);
     border-radius: 50%;
 }
-
-.timeline-date {
-    font-weight: bold;
-    color: var(--text-dim);
-    margin-bottom: 10px;
-}
-
+.timeline-date { font-weight: bold; color: var(--text-dim); margin-bottom: 10px; }
 .projet-box {
     background: var(--card-bg);
     padding: 15px;
@@ -152,35 +125,11 @@ footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0
     border-left: 4px solid var(--accent);
 }
 
+/* --- Footer --- */
 footer {
-    border-top: 1px solid #222;
-    background-color: var(--bg-color);
-}
-/* --- Option 1 : Séparateurs élégants avec espacement --- */
-
-section {
-    padding: 100px 10%; /* Augmente l'espace en haut et en bas des blocs */
-    border-top: 1px solid #222; /* Ligne très discrète pour marquer la fin */
-}
-
-/* On retire la ligne pour la toute première section pour éviter un trait sous le header */
-section:first-of-type {
-    border-top: none;
-}
-
-/* Style des titres avec la barre bleue (Option 3 demandée précédemment) */
-.center-text {
     text-align: center;
-    margin-bottom: 60px;
-    font-size: 2.2rem;
-}
-
-.center-text::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: var(--accent);
-    margin: 20px auto 0; /* L'espace de 20px ici décolle la barre du texte */
-    border-radius: 2px;
+    padding: 50px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    border-top: 1px solid #222;
 }
