@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
+<div id="contact-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Me contacter</h2>
+        <div class="contact-links">
+            <a href="mailto:ton-email@exemple.com" class="contact-item">📧 Email</a>
+            <a href="https://linkedin.com/in/ton-profil" target="_blank" class="contact-item">🔗 LinkedIn</a>
+            <a href="https://github.com/ton-pseudo" target="_blank" class="contact-item">💻 GitHub</a>
+        </div>
+    </div>
+</div>
 <body>
 
     <nav>
@@ -14,7 +25,7 @@
         <div class="links">
             <a href="#about">Expériences académiques</a>
             <a href="#pro">Expériences professionnelles</a>
-            <a href="mailto:votre-email@exemple.com">Contact</a>
+            <a href="javascript:void(0)" id="contact-trigger">Contact</a>
         </div>
     </nav>
 
