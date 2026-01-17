@@ -151,41 +151,36 @@ footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0
     margin-top: 15px;
     border-left: 4px solid var(--accent);
 }
-/* --- Mix Option 2 & 3 : Structure & Titres --- */
 
-/* Applique un fond légèrement gris à une section sur deux */
-section:nth-of-type(even) {
-    background-color: #161616; /* Gris très sombre pour le contraste */
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-}
-
-/* Style des titres de section plus marqué */
-.center-text {
-    text-align: center;
-    margin-bottom: 60px; /* Espace sous le titre */
-    margin-top: 20px;
-    font-size: 2.2rem;   /* Titre un peu plus grand */
-    letter-spacing: 1px;
-}
-
-/* La petite barre bleue sous le titre */
-.center-text::after {
-    content: "";
-    display: block;
-    width: 60px;      /* Largeur de la barre */
-    height: 4px;      /* Épaisseur */
-    background: var(--accent); /* Ton bleu #4f46e5 */
-    margin: 15px auto 0;       /* Centrage automatique */
-    border-radius: 2px;
-}
-/* S'assure que les cartes gardent leur couleur sombre sur le fond gris */
-section:nth-of-type(even) .card {
-    background: #1a1a1a; /* On force la couleur var(--card-bg) */
-}
-
-/* Optionnel : Ajoute un peu de padding en haut du footer pour qu'il ne colle pas */
 footer {
     border-top: 1px solid #222;
     background-color: var(--bg-color);
+}
+/* --- Option 1 : Séparateurs élégants avec espacement --- */
+
+section {
+    padding: 100px 10%; /* Augmente l'espace en haut et en bas des blocs */
+    border-top: 1px solid #222; /* Ligne très discrète pour marquer la fin */
+}
+
+/* On retire la ligne pour la toute première section pour éviter un trait sous le header */
+section:first-of-type {
+    border-top: none;
+}
+
+/* Style des titres avec la barre bleue (Option 3 demandée précédemment) */
+.center-text {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.2rem;
+}
+
+.center-text::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 20px auto 0; /* L'espace de 20px ici décolle la barre du texte */
+    border-radius: 2px;
 }
