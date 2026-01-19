@@ -202,11 +202,11 @@ footer {
 }
 
 .card-logo img {
-    max-height: 100%;        
-    max-width: 140px;        /* Un peu plus large pour les logos horizontaux */
-    object-fit: contain;     
-    /* filter: brightness(0) invert(1); <--- Supprime ou commente cette ligne si tes logos sont en couleur */
-    opacity: 1;              /* Augmenté pour une meilleure visibilité */
+    max-height: 100%;
+    max-width: 120px;
+    object-fit: contain;
+    /* filter: brightness(0) invert(1); */ /* On neutralise le filtre avec les symboles /* et */ */
+    opacity: 1; /* On remet l'opacité au maximum pour bien voir les couleurs */
     transition: 0.3s ease;
 }
 
