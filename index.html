@@ -11,11 +11,18 @@
 
     <nav>
         <div class="logo">Dorian Lapeyre</div>
-        <div class="links">
+    
+        <div class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
             <a href="#about">Expériences académiques</a>
             <a href="#pro">Expériences professionnelles</a>
             <a href="#asso">Expériences associatives</a>
-            <a href="javascript:void(0)" id="contact-trigger">Contact</a>
+            <a href="javascript:void(0)" id="contact-trigger-mobile">Contact</a>
         </div>
     </nav>
 
@@ -167,6 +174,14 @@
             }
         }
     </script>
+    <script>
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.getElementById('nav-links');
 
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+</script>
 </body>
 </html>
