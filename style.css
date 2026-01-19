@@ -215,3 +215,70 @@ footer {
     transform: scale(1.1);
     opacity: 1;
 }
+/* --- Navigation & Menu Burger --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 10%;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Style de l'icône Burger (3 traits) */
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Animation en "X" quand on clique */
+.burger-menu.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger-menu.active span:nth-child(2) { opacity: 0; }
+.burger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* Le menu déroulant (caché par défaut à droite) */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Cache le menu à l'extérieur de l'écran */
+    height: 100vh;
+    width: 250px;
+    background-color: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    border-left: 1px solid var(--accent);
+}
+
+/* Quand le menu est activé */
+.nav-links.active {
+    right: 0;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 20px 30px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #222;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: var(--accent);
+    color: white;
+}
