@@ -192,3 +192,26 @@ footer {
     background: var(--accent);
     transform: scale(1.05);
 }
+/* Style pour les logos dans les cartes */
+.card-logo {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    height: 60px;            /* Hauteur fixe pour aligner tous les titres */
+    margin-bottom: 20px;     /* Espace avec le titre h3 */
+}
+
+.card-logo img {
+    max-height: 100%;        /* Empêche le logo de dépasser en hauteur */
+    max-width: 120px;        /* Limite la largeur pour l'esthétique */
+    object-fit: contain;     /* Garde les proportions sans déformer */
+    filter: brightness(0) invert(1); /* Optionnel : force le logo en blanc si besoin */
+    opacity: 0.9;
+    transition: 0.3s ease;
+}
+
+/* Effet au survol de la carte */
+.card:hover .card-logo img {
+    transform: scale(1.1);
+    opacity: 1;
+}
