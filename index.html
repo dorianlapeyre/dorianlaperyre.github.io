@@ -175,6 +175,7 @@
         }
     </script>
     <script>
+        // --- GESTION DU MENU BURGER ---
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
 
@@ -182,6 +183,39 @@
             burgerMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-</script>
+
+        // --- GESTION DE LA MODALE CONTACT ---
+        const modal = document.getElementById("contact-modal");
+           const btnContact = document.getElementById("contact-trigger-mobile"); // Mis à jour pour correspondre à ton HTML
+        const spanClose = document.getElementsByClassName("close-button")[0];
+
+        // Ouvrir la modale et fermer le menu burger en même temps
+          btnContact.onclick = function() {
+            modal.style.display = "block";
+            burgerMenu.classList.remove('active'); // Ferme le menu burger pour qu'il ne cache pas la modale
+            navLinks.classList.remove('active');
+        }
+
+        // Fermer la modale avec la croix
+        spanClose.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Fermer la modale si on clique à côté
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Fermer le menu burger automatiquement quand on clique sur un lien (pour la navigation interne)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
 </body>
 </html>
