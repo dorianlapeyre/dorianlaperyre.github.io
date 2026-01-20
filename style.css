@@ -231,62 +231,72 @@ footer {
    7. STYLES POUR LES PAGES DE DÉTAILS (TIMELINE & MODERNE)
    ========================================================================== */
 
-/* Conteneur principal de la page de détail */
+/* Structure globale de la page de détail */
 /* ==========================================================================
-   7. STYLES POUR LES PAGES DE DÉTAILS (VERSION ÉPURÉE)
+   7. STYLES POUR LES PAGES DE DÉTAILS (VERSION OPTIMISÉE)
    ========================================================================== */
 
-/* Structure globale de la page de détail */
 .detail-page {
-    padding-top: 60px; /* Réduit pour laisser de la place au header */
+    padding-top: 40px;
 }
 
-/* Nouveau Header de page de détail */
+/* Header de page de détail - Meilleure disposition et contraste */
 .detail-header {
     width: 100%;
-    padding: 100px 10%;
+    padding: 80px 10% 40px 10%;
     background: linear-gradient(to bottom, #050a0f, #0f0f0f);
-    text-align: center; /* Centre tout le texte */
+    text-align: center;
     border-bottom: 1px solid #222;
     box-sizing: border-box;
 }
 
+/* Titre principal mieux mis en valeur */
 .detail-header h1 {
-    font-size: 3rem;
-    color: white;
-    margin-bottom: 10px;
+    font-size: 3.2rem;
+    color: #ffffff;
+    margin: 10px 0;
     font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Plus de contraste */
 }
 
+/* Sous-titre dans un petit badge élégant */
 .detail-subtitle {
+    display: inline-block;
     color: var(--accent);
-    font-size: 1.2rem;
+    background: rgba(79, 70, 229, 0.1);
+    padding: 6px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    display: block;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
 }
 
-/* Bouton Retour stylisé */
+/* BOUTON RETOUR STYLE "CARTE" INTERACTIF */
 .back-link {
     display: inline-flex;
     align-items: center;
-    color: var(--text-dim);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    padding: 8px 16px;
+    color: #e0e0e0; /* Pas de bleu par défaut */
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    background: var(--card-bg); /* Fond comme les cartes */
     border: 1px solid #333;
-    border-radius: 20px;
-    transition: 0.3s;
-    margin-top: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animation fluide */
+    cursor: pointer;
 }
 
+/* Interaction au survol (Hover) */
 .back-link:hover {
-    color: white;
-    border-color: var(--accent);
-    background: rgba(79, 70, 229, 0.1);
+    transform: scale(1.05); /* Léger grossissement */
+    border-color: var(--accent); /* Contour bleuté */
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.2); /* Halo bleuté */
 }
 
 /* Section "Mon Expérience" (le texte au-dessus de la timeline) */
