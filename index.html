@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-<header class="center-text main-header">
-    <div class="animated-waves"></div> <h1>Étudiant en <span class="highlight">Master Science de la mer</span></h1>
-    <p>Au sein de l'OSU Pythéas à Aix-Marseille Université dans le parcours Océan Physique Biogéochimie</p>
-</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorian Lapeyre | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
 <body>
 
     <nav>
@@ -24,6 +27,7 @@
     </nav>
 
     <header class="center-text main-header">
+        <div class="animated-waves"></div> 
         <h1>Étudiant en <span class="highlight">Master Science de la mer</span></h1>
         <p>Au sein de l'OSU Pythéas à Aix-Marseille Université dans le parcours Océan Physique Biogéochimie</p>
     </header>
@@ -153,20 +157,17 @@
     </div>
 
     <script>
-        // --- 1. SÉLECTION DES ÉLÉMENTS ---
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
         const modal = document.getElementById("contact-modal");
         const btnContact = document.getElementById("contact-trigger-mobile");
         const spanClose = document.querySelector(".close-button");
 
-        // --- 2. GESTION DU MENU BURGER ---
         burgerMenu.addEventListener('click', () => {
             burgerMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // Fermer le menu burger quand on clique sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerMenu.classList.remove('active');
@@ -174,10 +175,8 @@
             });
         });
 
-        // --- 3. GESTION DE LA MODALE CONTACT ---
         btnContact.onclick = function() {
             modal.style.display = "block";
-            // On ferme le menu burger pour laisser voir la modale
             burgerMenu.classList.remove('active');
             navLinks.classList.remove('active');
         }
@@ -192,6 +191,5 @@
             }
         }
     </script>
-
 </body>
 </html>
