@@ -232,18 +232,81 @@ footer {
    ========================================================================== */
 
 /* Conteneur principal de la page de détail */
+/* ==========================================================================
+   7. STYLES POUR LES PAGES DE DÉTAILS (VERSION ÉPURÉE)
+   ========================================================================== */
+
+/* Structure globale de la page de détail */
 .detail-page {
-    padding-top: 120px; /* Espace pour la navigation */
-    max-width: 900px;
-    margin: 0 auto;
+    padding-top: 60px; /* Réduit pour laisser de la place au header */
 }
 
-.back-link {
-    display: inline-block;
+/* Nouveau Header de page de détail */
+.detail-header {
+    width: 100%;
+    padding: 100px 10%;
+    background: linear-gradient(to bottom, #050a0f, #0f0f0f);
+    text-align: center; /* Centre tout le texte */
+    border-bottom: 1px solid #222;
+    box-sizing: border-box;
+}
+
+.detail-header h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.detail-subtitle {
     color: var(--accent);
-    text-decoration: none;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* Bouton Retour stylisé */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.back-link:hover {
+    color: white;
+    border-color: var(--accent);
+    background: rgba(79, 70, 229, 0.1);
+}
+
+/* Section "Mon Expérience" (le texte au-dessus de la timeline) */
+.experience-intro {
+    max-width: 800px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.experience-intro h2 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.experience-intro p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 /* Structure de la Timeline */
