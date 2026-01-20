@@ -163,11 +163,13 @@
         const btnContact = document.getElementById("contact-trigger-mobile");
         const spanClose = document.querySelector(".close-button");
 
+        // Toggle Menu Burger
         burgerMenu.addEventListener('click', () => {
             burgerMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
+        // Fermer le menu au clic sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerMenu.classList.remove('active');
@@ -175,6 +177,7 @@
             });
         });
 
+        // Gestion de la modale Contact
         btnContact.onclick = function() {
             modal.style.display = "block";
             burgerMenu.classList.remove('active');
