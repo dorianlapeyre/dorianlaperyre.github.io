@@ -305,4 +305,39 @@ nav {
 }
 
 
+/* --- Fond de Vagues Animées dans le Header --- */
 
+.main-header {
+    position: relative; /* Très important pour positionner les vagues par rapport au header */
+    overflow: hidden;   /* Cache ce qui dépasse (pour ne pas voir l'animation sortir) */
+}
+
+.animated-waves {
+    position: absolute; /* Positionné par rapport au header */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(20, 20, 40, 0.8) 0%,   /* Bleu très foncé / presque noir */
+        rgba(0, 50, 80, 0.8) 50%,  /* Bleu océan foncé */
+        rgba(20, 20, 40, 0.8) 100%
+    );
+    background-size: 200% 200%; /* Important pour l'animation du dégradé */
+    animation: moveWaves 15s ease infinite alternate; /* Nom de l'animation, durée, type, répétition */
+    z-index: 0; /* Place cette couche en arrière-plan */
+    pointer-events: none; /* Permet de cliquer sur le texte par-dessus */
+}
+
+/* Texte au-dessus des vagues */
+.main-header h1, .main-header p {
+    position: relative; /* Rend le texte positionnable au-dessus des vagues */
+    z-index: 1;         /* Place le texte au-dessus des vagues */
+}
+
+/* Définition de l'animation des vagues */
+@keyframes moveWaves {
+    0% { background-position: 0% 50%; } /* Départ de l'animation */
+    100% { background-position: 100% 50%; } /* Fin de l'animation */
+}
