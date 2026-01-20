@@ -251,25 +251,58 @@ nav {
 .burger-menu.active span:nth-child(2) { opacity: 0; }
 .burger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* Le menu déroulant */
+/* --- Menu Déroulant Moderne & Compact --- */
 .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%; 
-    height: 100vh;
-    width: 250px;
-    background-color: var(--card-bg);
+    position: absolute; /* Il se place par rapport à la barre de navigation */
+    top: 100%;          /* Juste en dessous de la barre nav */
+    right: 10%;         /* Aligné avec le bord droit de ton contenu */
+    width: 280px;       /* Largeur fixe et élégante */
+    background-color: rgba(26, 26, 26, 0.95); /* Fond sombre légèrement transparent */
+    backdrop-filter: blur(10px);              /* Effet de flou derrière le menu */
     display: flex;
     flex-direction: column;
-    padding-top: 100px; /* On augmente l'espace pour ne pas chevaucher le burger */
-    transition: 0.4s ease;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    border-left: 1px solid var(--accent);
-    z-index: 1001; /* En dessous du bouton burger */
+    padding: 10px;
+    border-radius: 15px;                      /* Coins arrondis */
+    border: 1px solid rgba(79, 70, 229, 0.3); /* Bordure légère avec ta couleur accent */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);  /* Ombre portée pour l'effet flottant */
+    
+    /* Animation d'apparition */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
 }
 
+/* État quand le menu est ouvert */
 .nav-links.active {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px); /* Il descend légèrement en apparaissant */
 }
+
+/* Style des liens à l'intérieur du menu */
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 1.1rem;      /* Plus gros */
+    font-weight: 600;       /* Plus gras/moderne */
+    border-radius: 10px;
+    transition: 0.2s;
+    border-bottom: none;    /* On enlève les traits de séparation pour un look épuré */
+}
+
+.nav-links a:hover {
+    background-color: var(--accent); /* Ta couleur violette/bleue */
+    color: white;
+    padding-left: 25px; /* Petit effet de décalage au survol */
+}
+
+/* Ajustement du bouton Burger pour qu'il soit bien aligné */
+.burger-menu {
+    z-index: 1005;
+}
+
 
 
