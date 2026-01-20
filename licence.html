@@ -7,46 +7,50 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="detail-page">
 
-    <nav>
-        <div class="logo">Dorian Lapeyre</div>
-        <div class="links"><a href="index.html">← Retour</a></div>
-    </nav>
+    <header class="detail-header">
+        <span class="detail-subtitle">Université de Pau et des Pays de l'Adour (UPPA)</span>
+        <h1>Licence de Physique-Chimie</h1>
+        
+        <a href="index.html" class="back-link">
+            ← Retour au portfolio
+        </a>
+    </header>
 
-    <main class="container-detail">
-        <header class="header-detail">
-            <h1>Licence de Physique-Chimie</h1>
-            <p class="highlight">Université de Pau et des Pays de l'Adour (UPPA)</p>
-        </header>
-
-        <section class="content-section">
+    <main>
+        <section class="experience-intro">
             <h2>Mon Expérience</h2>
-            <p>Décris ici ton parcours à l'UPPA. C'est l'endroit idéal pour parler de ton intérêt pour les sciences de la matière et la transition que tu as faite vers les sciences de l'environnement.</p>
+            <p>
+                Décris ici ton parcours à l'UPPA. C'est l'endroit idéal pour parler de ton intérêt 
+                pour les sciences de la matière et la transition que tu as faite vers les sciences 
+                de l'environnement.
+            </p>
         </section>
 
-        <section class="content-section">
-            <h2>Parcours académique</h2>
+        <section id="parcours">
+            <h2 class="center-text">Parcours académique</h2>
             
-            <div class="timeline">
+            <div class="timeline-container">
+                
                 <div class="timeline-item">
-                    <div class="timeline-date">2022 - 2023 | Licence 3</div>
-                    <div class="timeline-content">
+                    <span class="timeline-date">2022 - 2023 | Licence 3</span>
+                    <div class="content-box">
                         <h3>Spécialisation</h3>
                         <ul>
                             <li>Physique du solide et mécanique quantique.</li>
                             <li>Chimie analytique et environnementale.</li>
                             <li>Méthodes numériques pour la physique.</li>
                         </ul>
-                        <div class="projet-box">
+                        <p style="margin-top: 15px; padding: 10px; background: rgba(79, 70, 229, 0.1); border-radius: 8px; border-left: 3px solid var(--accent);">
                             <strong>Stage / Projet :</strong> Analyse environnementale (donne des précisions sur le lieu ou le sujet précis).
-                        </div>
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">2021 - 2022 | Licence 1 & 2</div>
-                    <div class="timeline-content">
+                    <span class="timeline-date">2021 - 2022 | Licence 1 & 2</span>
+                    <div class="content-box">
                         <h3>Fondamentaux</h3>
                         <ul>
                             <li>Thermodynamique classique et statistique.</li>
@@ -55,6 +59,7 @@
                         </ul>
                     </div>
                 </div>
+                
             </div>
         </section>
     </main>
