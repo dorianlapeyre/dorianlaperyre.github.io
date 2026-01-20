@@ -15,38 +15,158 @@ body {
     line-height: 1.6;
 }
 
-/* --- Navigation --- */
+/* --- Navigation (Fusionnée et Transparente) --- */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 10%;
+    padding: 1.5rem 10%;
     align-items: center;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; 
+    z-index: 1002; 
+    box-sizing: border-box;
 }
-nav .logo { font-weight: 700; font-size: 1.2rem; }
-nav a { color: var(--text-dim); text-decoration: none; margin-left: 20px; transition: 0.3s; }
-nav a:hover { color: white; }
 
-/* --- Header --- */
-header.main-header {
-    padding: 100px 10% 40px 10%; /* Espace intérieur */
-    max-width: 900px;           /* Largeur max pour une lecture élégante */
-    margin: 0 auto;             /* LE SECRET : Centre le bloc entier sur la page */
+nav .logo { font-weight: 700; font-size: 1.2rem; }
+
+/* --- Menu Burger --- */
+.burger-menu {
     display: flex;
     flex-direction: column;
-    align-items: center;        /* Aligne la barre bleue et le texte au milieu */
-    text-align: center;         /* Centre les lignes de texte */
+    width: 30px;
+    cursor: pointer;
+    gap: 5px;
+    position: relative; 
+    z-index: 1005;
 }
-h1 { font-size: 3.5rem; margin-bottom: 10px; }
-.highlight { color: var(--accent); }
-header p { font-size: 1.5rem; color: var(--text-dim); }
 
-/* --- Sections & Grille (Accueil) --- */
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.burger-menu.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger-menu.active span:nth-child(2) { opacity: 0; }
+.burger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- Menu Déroulant --- */
+.nav-links {
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    width: 280px;
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: var(--accent);
+    color: white;
+    padding-left: 25px;
+}
+
+/* --- Header & Fond Océanique --- */
+header.main-header {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #050a0f;
+    text-align: center;
+    padding: 100px 10% 40px 10%;
+    box-sizing: border-box;
+}
+
+.animated-waves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: linear-gradient(135deg, #050a0f 0%, #0a1e3b 50%, #050a0f 100%);
+    background-size: 400% 400%;
+    animation: oceanFlow 15s ease infinite alternate;
+}
+
+.animated-waves::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(255, 255, 255, 0.04) 61px,
+        rgba(255, 255, 255, 0.01) 65px,
+        transparent 75px
+    );
+    animation: foamSlide 25s linear infinite;
+    opacity: 0.6;
+}
+
+h1 { font-size: 3.5rem; margin-bottom: 10px; position: relative; z-index: 2; }
+.highlight { color: var(--accent); }
+header p { font-size: 1.5rem; color: var(--text-dim); position: relative; z-index: 2; }
+
+/* Animations Keyframes */
+@keyframes oceanFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes foamSlide {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* --- Reste du CSS (Sections, Grille, Modale...) --- */
 section {
     padding: 100px 10%; 
-    background-color: var(--bg-color); /* Fond noir forcé */
-    border-top: 1px solid #222;        /* Ligne de séparation */
+    background-color: var(--bg-color);
+    border-top: 1px solid #222;
 }
-section:first-of-type { border-top: none; }
 
 .grid {
     display: flex;
@@ -66,19 +186,21 @@ section:first-of-type { border-top: none; }
     max-width: 350px;
     box-sizing: border-box;
 }
+
 .card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
 }
+
 .card-link { text-decoration: none; color: inherit; display: block; }
 
-/* --- Titres avec barre bleue --- */
 .center-text {
     text-align: center;
     width: 100%;
     margin-bottom: 60px;
     font-size: 2.2rem;
 }
+
 .center-text::after {
     content: "";
     display: block;
@@ -89,66 +211,17 @@ section:first-of-type { border-top: none; }
     border-radius: 2px;
 }
 
-/* --- Pages de détails (Master, PCSI, etc.) --- */
-.container-detail {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 10%;
-}
-.header-detail {
-    margin-bottom: 60px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 20px;
-}
-.content-section { margin-bottom: 50px; }
-.content-section h2 { color: var(--accent); margin-bottom: 20px; }
-
-/* Timeline élégante */
-.timeline {
-    border-left: 2px solid #333;
-    padding-left: 30px;
-    margin-left: 10px;
-}
-.timeline-item { position: relative; margin-bottom: 40px; }
-.timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -41px;
-    top: 5px;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-color);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-}
-.timeline-date { font-weight: bold; color: var(--text-dim); margin-bottom: 10px; }
-.projet-box {
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    border-left: 4px solid var(--accent);
-}
-
-/* --- Footer --- */
-footer {
-    text-align: center;
-    padding: 50px;
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    border-top: 1px solid #222;
-}
-/* Style de la fenêtre modale */
+/* Modale Contact */
 .modal {
-    display: none; /* Caché par défaut */
+    display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8); /* Fond sombre transparent */
-    backdrop-filter: blur(5px); /* Effet de flou sur l'arrière-plan */
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
@@ -160,7 +233,6 @@ footer {
     width: 300px;
     text-align: center;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .close-button {
@@ -192,188 +264,26 @@ footer {
     background: var(--accent);
     transform: scale(1.05);
 }
-/* Style pour les logos dans les cartes */
+
+/* Logos */
 .card-logo {
     display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center;     /* Centre verticalement */
-    height: 60px;            /* Hauteur fixe pour aligner tous les titres */
-    margin-bottom: 20px;     /* Espace avec le titre h3 */
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 20px;
 }
 
 .card-logo img {
     max-height: 100%;
     max-width: 120px;
     object-fit: contain;
-    /* filter: brightness(0) invert(1); */ /* On neutralise le filtre avec les symboles /* et */ */
-    opacity: 1; /* On remet l'opacité au maximum pour bien voir les couleurs */
-    transition: 0.3s ease;
 }
 
-/* Effet au survol de la carte */
-.card:hover .card-logo img {
-    transform: scale(1.1);
-    opacity: 1;
-}
-
-/* --- Navigation & Menu Burger --- */
-/* --- Navigation (Fusionnée et Transparente) --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 10%;
-    align-items: center;
-    position: absolute; /* Changement ici : pour flotter AU-DESSUS du fond */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: transparent; /* On enlève le fond noir pour voir les vagues */
-    z-index: 1002; 
-    box-sizing: border-box; /* Évite que le padding ne fasse déborder la barre */
-}
-
-/* On force le bouton burger à rester visible et au-dessus */
-.burger-menu {
-    display: flex;
-    flex-direction: column;
-    width: 30px;
-    cursor: pointer;
-    gap: 5px;
-    position: relative; 
-    z-index: 1005; /* La valeur la plus haute pour être toujours cliquable */
-}
-
-.burger-menu span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--text-main);
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
-
-/* Animation en "X" */
-.burger-menu.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.burger-menu.active span:nth-child(2) { opacity: 0; }
-.burger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-/* --- Menu Déroulant Moderne & Compact --- */
-.nav-links {
-    position: absolute; /* Il se place par rapport à la barre de navigation */
-    top: 100%;          /* Juste en dessous de la barre nav */
-    right: 10%;         /* Aligné avec le bord droit de ton contenu */
-    width: 280px;       /* Largeur fixe et élégante */
-    background-color: rgba(26, 26, 26, 0.95); /* Fond sombre légèrement transparent */
-    backdrop-filter: blur(10px);              /* Effet de flou derrière le menu */
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border-radius: 15px;                      /* Coins arrondis */
-    border: 1px solid rgba(79, 70, 229, 0.3); /* Bordure légère avec ta couleur accent */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);  /* Ombre portée pour l'effet flottant */
-    
-    /* Animation d'apparition */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1001;
-}
-
-/* État quand le menu est ouvert */
-.nav-links.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(10px); /* Il descend légèrement en apparaissant */
-}
-
-/* Style des liens à l'intérieur du menu */
-.nav-links a {
-    color: var(--text-main);
-    text-decoration: none;
-    padding: 15px 20px;
-    font-size: 1.1rem;      /* Plus gros */
-    font-weight: 600;       /* Plus gras/moderne */
-    border-radius: 10px;
-    transition: 0.2s;
-    border-bottom: none;    /* On enlève les traits de séparation pour un look épuré */
-}
-
-.nav-links a:hover {
-    background-color: var(--accent); /* Ta couleur violette/bleue */
-    color: white;
-    padding-left: 25px; /* Petit effet de décalage au survol */
-}
-
-/* Ajustement du bouton Burger pour qu'il soit bien aligné */
-.burger-menu {
-    z-index: 1005;
-}
-
-
-/* --- Fond Océanique Dynamique --- */
-
-.main-header {
-    position: relative;
-    width: 100%;
-    min-height: 70vh; /* Hauteur généreuse pour voir l'effet */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: #050a0f; /* Couleur de fond de secours */
-}
-
-/* Couche des vagues et de l'écume */
-.animated-waves {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background: linear-gradient(135deg, #050a0f 0%, #0a1e3b 50%, #050a0f 100%);
-    background-size: 400% 400%;
-    animation: oceanFlow 15s ease infinite alternate;
-}
-
-/* Ajout des traînées blanches (écume subtile) */
-.animated-waves::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 60px,
-        rgba(255, 255, 255, 0.04) 61px, /* Ligne fine blanche */
-        rgba(255, 255, 255, 0.01) 65px, /* Dégradé de l'écume */
-        transparent 75px
-    );
-    animation: foamSlide 25s linear infinite;
-    opacity: 0.6;
-}
-
-/* Animation du mouvement de l'eau */
-@keyframes oceanFlow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-/* Animation des traînées d'écume */
-@keyframes foamMove {
-    0% { transform: translate(-10%, -10%); }
-    100% { transform: translate(0%, 0%); }
-}
-
-/* --- Ajustement pour que le texte reste lisible --- */
-.main-header h1, 
-.main-header p {
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Ombre pour détacher le texte du fond */
+footer {
+    text-align: center;
+    padding: 50px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    border-top: 1px solid #222;
 }
