@@ -7,55 +7,58 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="detail-page">
 
-    <nav>
-        <div class="logo">Dorian Lapeyre</div>
-        <div class="links"><a href="index.html">← Retour</a></div>
-    </nav>
+    <header class="detail-header">
+        <span class="detail-subtitle">Capbreton, Plage de la Piste</span>
+        <h1>Nageur sauveteur</h1>
+        
+        <a href="index.html" class="back-link">
+            ← Retour au portfolio
+        </a>
+    </header>
 
-    <main class="container-detail">
-        <header class="header-detail">
-            <h1>Nageur sauveteur</h1>
-            <p class="highlight">Capbreton, Plage de la Piste</p>
-        </header>
-
-        <section class="content-section">
+    <main>
+        <section class="experience-intro">
             <h2>Mon Expérience</h2>
-            <p>Ici, décris ton expérience globale, tes stages et tes recherches à l'OSU Pythéas.</p>
+            <p>
+                Surveillance du littoral landais au sein du SMGBL. Cette expérience m'a permis de développer 
+                une grande réactivité, le sens des responsabilités et une connaissance approfondie du milieu marin (baïnes, courants, houle).
+            </p>
         </section>
 
-        <section class="content-section">
-            <h2>Grade</h2>
+        <section id="parcours">
+            <h2 class="center-text">Évolution et Missions</h2>
             
-            <div class="timeline">
+            <div class="timeline-container">
+                
                 <div class="timeline-item">
-                    <div class="timeline-date">2024 - 2025 | Échelon 3</div>
-                    <div class="timeline-content">
-                        <h3>Missions principales</h3>
+                    <span class="timeline-date">2024 - 2025 | Échelon 3</span>
+                    <div class="content-box">
+                        <h3>Missions de coordination</h3>
                         <ul>
-                            <li>Gestion équipiers, plage,..</li>
-                            <li>Gestes de secours</li>
+                            <li>Gestion des équipiers et organisation de la zone de baignade.</li>
+                            <li>Prise de décision en situation d'urgence et coordination avec le chef de poste.</li>
+                            <li>Maintien du matériel de secours et des liaisons radio.</li>
                         </ul>
-                        <div class="projet-box">
-                            <strong>Missions :</strong> Analyse de données de flotteurs Argo (Python, traitement de séries temporelles).
-                        </div>
+                        <p style="margin-top: 15px; padding: 12px; background: rgba(79, 70, 229, 0.1); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <strong>Compétence clé :</strong> Leadership et gestion du stress en milieu hostile.
+                        </p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">2022 - 2024 | Échelon 2</div>
-                    <div class="timeline-content">
-                        <h3>Missions principales</h3>
+                    <span class="timeline-date">2022 - 2024 | Échelon 2</span>
+                    <div class="content-box">
+                        <h3>Missions d'intervention</h3>
                         <ul>
-                            <li>Geste de premiers secours, communication</li>
-                            <li>Sauvetage</li>
+                            <li>Gestes de premiers secours et prise en charge des victimes.</li>
+                            <li>Sauvetages actifs en zone de baignade (filin, planche de sauvetage).</li>
+                            <li>Prévention auprès du public sur les dangers de l'océan.</li>
                         </ul>
-                        <div class="projet-box">
-                            <strong>Missions :</strong> Analyse de la circulation en Méditerranée.
-                        </div>
                     </div>
                 </div>
+                
             </div>
         </section>
     </main>
