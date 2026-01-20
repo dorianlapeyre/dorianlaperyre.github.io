@@ -227,3 +227,92 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid #222;
 }
+/* ==========================================================================
+   7. STYLES POUR LES PAGES DE DÉTAILS (TIMELINE & MODERNE)
+   ========================================================================== */
+
+/* Conteneur principal de la page de détail */
+.detail-page {
+    padding-top: 120px; /* Espace pour la navigation */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Structure de la Timeline */
+.timeline-container {
+    position: relative;
+    padding-left: 40px;
+    margin-top: 50px;
+}
+
+/* La ligne verticale à gauche */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* Le point sur la ligne */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -46px; /* Ajusté pour être sur la ligne */
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid #0f0f0f;
+    z-index: 2;
+}
+
+/* Encadrés modernes */
+.content-box {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: 0.3s ease;
+}
+
+.content-box:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+}
+
+.timeline-date {
+    display: block;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.content-box h3 {
+    margin-top: 0;
+    color: white;
+}
+
+.content-box p {
+    color: var(--text-dim);
+    margin-bottom: 0;
+}
