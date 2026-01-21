@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        /* Petit correctif pour s'assurer que Leaflet ne bloque pas l'affichage du néon */
+        .custom-div-icon { background: none !important; border: none !important; }
+    </style>
 </head>
 <body>
 
@@ -23,7 +27,7 @@
             <a href="#about">Expériences académiques</a>
             <a href="#pro">Expériences professionnelles</a>
             <a href="#asso">Expériences associatives</a>
-            <a href="javascript:void(0)" id="contact-trigger-mobile">Contact</a>
+            <a href="javascript:void(0)" class="contact-trigger">Contact</a>
         </div>
     </nav>
 
@@ -33,21 +37,21 @@
         <h1>Étudiant en <span class="highlight">Master Science de la mer</span></h1>
         <p>Au sein de l'OSU Pythéas à Aix-Marseille Université dans le parcours Océan Physique Biogéochimie</p>
     </header>
+
     <section id="map-section">
         <h2 class="center-text">Où m'avez-vous trouvé ?</h2>
-        <p class="map-intro">
+        <p class="map-intro" style="text-align: center; color: #a0a0a0; margin-bottom: 20px;">
             Explorez les lieux de mes expériences académiques, professionnelles et associatives.
         </p>
         <div id="experience-map"></div>
     </section>
+
     <section id="about">
         <h2 class="center-text">Expérience académique</h2>
         <div class="grid">
             <a href="pcsi.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/logo_0696992e-eda9-4ff8-9dee-37ef2ee30098.svg" alt="Logo CPGE">
-                    </div>
+                    <div class="card-logo"><img src="logos/logo_0696992e-eda9-4ff8-9dee-37ef2ee30098.svg" alt="Logo CPGE"></div>
                     <h3>CPGE</h3>
                     <p>PCSI / PC</p>
                     <span>En savoir plus →</span>
@@ -55,9 +59,7 @@
             </a>
             <a href="licence.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA">
-                    </div>
+                    <div class="card-logo"><img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA"></div>
                     <h3>Licence</h3>
                     <p>Physique-Chimie</p>
                     <span>En savoir plus →</span>
@@ -65,9 +67,7 @@
             </a>
             <a href="insa.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/Logo_INSAToulouse-quadri.png" alt="Logo INSA">
-                    </div> 
+                    <div class="card-logo"><img src="logos/Logo_INSAToulouse-quadri.png" alt="Logo INSA"></div> 
                     <h3>INSA Toulouse</h3>
                     <p>Génie Mécanique</p>
                     <span>En savoir plus →</span>
@@ -75,9 +75,7 @@
             </a>
             <a href="master.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/cropped-amu-logo.png" alt="Logo AMU">
-                    </div>
+                    <div class="card-logo"><img src="logos/cropped-amu-logo.png" alt="Logo AMU"></div>
                     <h3>Master</h3>
                     <p>Science de la mer</p>
                     <span>En savoir plus →</span>
@@ -85,9 +83,7 @@
             </a>
             <a href="siame.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/SIAME.png" alt="Logo SIAME">
-                    </div> 
+                    <div class="card-logo"><img src="logos/SIAME.png" alt="Logo SIAME"></div> 
                     <h3>Stage de L3</h3>
                     <p>Laboratoire SIAME</p>
                     <span>En savoir plus →</span>
@@ -101,9 +97,7 @@
         <div class="grid">
             <a href="smgbl.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/logo-smgbl.jpg" alt="Logo SMGBL">
-                    </div>
+                    <div class="card-logo"><img src="logos/logo-smgbl.jpg" alt="Logo SMGBL"></div>
                     <h3>Nageur sauveteur</h3>
                     <p>SMGBL (Littoral Landais)</p>
                     <span>En savoir plus →</span>
@@ -111,9 +105,7 @@
             </a>
             <a href="tuteur.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA">
-                    </div>
+                    <div class="card-logo"><img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA"></div>
                     <h3>Tuteur</h3>
                     <p>Accompagnement universitaire</p>
                     <span>En savoir plus →</span>
@@ -127,9 +119,7 @@
         <div class="grid">
             <a href="nsc.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/Logo_NSC.png" alt="Logo NSC">
-                    </div>
+                    <div class="card-logo"><img src="logos/Logo_NSC.png" alt="Logo NSC"></div>
                     <h3>Sauvetage Côtier</h3>
                     <p>NSC (Hossegor)</p>
                     <span>En savoir plus →</span>
@@ -137,9 +127,7 @@
             </a>
             <a href="csc.html" class="card-link">
                 <div class="card">
-                    <div class="card-logo">
-                        <img src="logos/Logo_CSC.png" alt="Logo CSC">
-                    </div>
+                    <div class="card-logo"><img src="logos/Logo_CSC.png" alt="Logo CSC"></div>
                     <h3>Bénévole</h3>
                     <p>Capbreton Sauvetage Côtier</p>
                     <span>En savoir plus →</span>
@@ -165,19 +153,18 @@
     </div>
 
     <script>
+        // --- GESTION NAVIGATION & MODALE ---
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
         const modal = document.getElementById("contact-modal");
-        const btnContact = document.getElementById("contact-trigger-mobile");
+        const contactTriggers = document.querySelectorAll(".contact-trigger");
         const spanClose = document.querySelector(".close-button");
 
-        // Toggle Menu Burger
         burgerMenu.addEventListener('click', () => {
             burgerMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // Fermer le menu au clic sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerMenu.classList.remove('active');
@@ -185,34 +172,27 @@
             });
         });
 
-        // Gestion de la modale Contact
-        btnContact.onclick = function() {
-            modal.style.display = "block";
-            burgerMenu.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-
-        spanClose.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+        contactTriggers.forEach(trigger => {
+            trigger.onclick = function() {
+                modal.style.display = "block";
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
             }
-        }
-             // Initialisation de la carte avec un fond sombre et sobre
+        });
+
+        spanClose.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
+
+        // --- INITIALISATION CARTE ---
         const map = L.map('experience-map', {
             scrollWheelZoom: false,
-            zoomControl: false // On cache les boutons +/- pour plus de sobriété
-        }).setView([45.0, 1.0], 6); 
+            zoomControl: false 
+        }).setView([44.5, 1.0], 6); 
         
-        // Utilisation de tuiles minimalistes (Positron Dark)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; CARTO'
         }).addTo(map);
         
-        // Définition de l'icône personnalisée "Néon Bleu"
         const neonIcon = L.divIcon({
             className: 'custom-div-icon',
             html: "<div class='neon-marker'></div>",
@@ -229,15 +209,12 @@
             { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur" }
         ];
         
-        // Ajout des marqueurs avec l'icône néon
         experiences.forEach(exp => {
             L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
                 .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
         });
         
-        // Forcer le rendu propre de la carte
         setTimeout(() => { map.invalidateSize(); }, 500);
-
     </script>
 </body>
 </html>
