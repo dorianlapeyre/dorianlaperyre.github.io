@@ -201,34 +201,33 @@
                 modal.style.display = "none";
             }
         }
-    // NOUVEAU CODE POUR LA CARTE LEAFLET
-        // Initialisation de la carte
-        const map = L.map('experience-map').setView([43.6043, 1.4437], 6); // Centré sur la France, zoom 6
-
-        // Ajout des tuiles OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                // Initialisation de la carte
+        const map = L.map('experience-map', {
+            scrollWheelZoom: false // Empêche le zoom accidentel en scrollant la page
+        }).setView([44.5, -0.5], 6); 
+        
+        // Utilisation d'un design de carte SOMBRE (CartoDB Dark Matter)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 20
         }).addTo(map);
-
-        // Vos lieux d'expérience avec leurs coordonnées (à ajuster si besoin)
+        
+        // Vos marqueurs (ajustez les coordonnées si besoin)
         const experiences = [
-            { lat: 43.6043, lng: 1.4437, title: "INSA Toulouse", description: "Génie Mécanique" },
-            { lat: 43.4862, lng: -1.4839, title: "Lycée René Cassin, Bayonne", description: "CPGE PCSI/PC" },
-            { lat: 43.4695, lng: -1.5204, title: "UPPA, Anglet", description: "Licence Physique-Chimie & Tuteur" },
-            { lat: 43.2965, lng: 5.3698, title: "Aix-Marseille Université", description: "Master Science de la Mer" },
-            { lat: 43.7102, lng: 7.2620, title: "SIAME, Nice", description: "Stage L3" },
-            { lat: 43.7042, lng: -1.4284, title: "SMGBL, Littoral Landais", description: "Nageur Sauveteur" },
-            { lat: 43.6669, lng: -1.4397, title: "NSC, Hossegor", description: "Sauvetage Côtier" },
-            { lat: 43.6429, lng: -1.4452, title: "CSC, Capbreton", description: "Bénévole Sauvetage Côtier" }
+            { lat: 43.6043, lng: 1.4437, title: "INSA Toulouse", desc: "Génie Mécanique" },
+            { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI/PC - Lycée Cassin" },
+            { lat: 43.4695, lng: -1.5204, title: "Anglet", desc: "Licence & Tutorat UPPA" },
+            { lat: 43.2965, lng: 5.3698, title: "Marseille", desc: "Master Science de la Mer" },
+            { lat: 43.6669, lng: -1.4397, title: "Hossegor", desc: "Sauvetage Côtier NSC" },
+            { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur & CSC" }
         ];
-
-        // Ajout des marqueurs et des popups
+        
         experiences.forEach(exp => {
             L.marker([exp.lat, exp.lng]).addTo(map)
-                .bindPopup(`<b>${exp.title}</b><br>${exp.description}`)
-                .openPopup(); // Ouvre directement le popup au chargement pour le premier marqueur
+                .bindPopup(`<b style="color:#4f46e5">${exp.title}</b><br>${exp.desc}`);
         });
-        // FIN NOUVEAU CODE POUR LA CARTE LEAFLET
+
     </script>
 </body>
 </html>
