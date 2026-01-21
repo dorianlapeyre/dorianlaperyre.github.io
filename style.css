@@ -390,66 +390,22 @@ footer {
     margin-bottom: 0;
 }
 /* ==========================================================================
-   8. STYLES POUR LA CARTE INTERACTIVE
+   8. STYLES POUR LA CARTE INTERACTIVE (RENDU MODERNE)
    ========================================================================== */
 #map-section {
-    padding: 80px 10%; /* Reprend le padding des autres sections */
-    border-top: 1px solid #222; /* Ligne de séparation */
-    background-color: var(--bg-color); /* Fond pour la section carte */
-    text-align: center; /* Centre le titre et le paragraphe d'intro */
+    padding: 80px 10%;
+    background: var(--bg-color);
+    text-align: center;
+    border-top: 1px solid #222;
 }
 
 .map-intro {
     color: var(--text-dim);
     font-size: 1.1rem;
     max-width: 800px;
-    margin: 20px auto 40px auto; /* Centré, et espace au-dessus de la carte */
+    margin: 20px auto 10px auto;
 }
 
-#experience-map {
-    height: 500px; /* Hauteur fixe pour la carte */
-    width: 100%;
-    border-radius: 15px; /* Bords arrondis pour s'harmoniser */
-    border: 1px solid var(--accent); /* Bordure accentuée */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Ombre légère pour le relief */
-    margin: 0 auto; /* Centrage horizontal */
-    z-index: 0; /* Assurez-vous que la carte est en arrière-plan */
-}
-
-/* Styles pour les popups Leaflet - Optionnel, pour un look plus sombre */
-.leaflet-popup-content-wrapper,
-.leaflet-popup-tip {
-    background: var(--card-bg); /* Fond des popups comme vos cartes */
-    color: var(--text-main);
-    font-family: 'Inter', sans-serif;
-    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-}
-
-.leaflet-popup-content-wrapper {
-    border-radius: 8px;
-}
-
-.leaflet-popup-content b {
-    color: var(--accent); /* Titre du popup en couleur d'accent */
-}
-
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out,
-.leaflet-control-attribution a {
-    color: var(--text-main); /* Texte des contrôles de la carte */
-}
-
-.leaflet-control-attribution {
-    color: var(--text-dim); /* Attribution en bas de carte */
-}
-/* Section de la carte interactive */
-#map-section {
-    padding: 80px 10%;
-    background: var(--bg-color);
-    text-align: center;
-}
-
-/* Le conteneur "Encadré Lumineux" */
 #experience-map {
     height: 500px;
     width: 100%;
@@ -457,29 +413,42 @@ footer {
     margin: 40px auto;
     border-radius: 20px;
     
-    /* Bordure fine violette */
+    /* Bordure fine violette & Lueur néon */
     border: 1.5px solid rgba(79, 70, 229, 0.6); 
-    
-    /* Lueur néon (Halo bleu/violet) comme sur l'image */
     box-shadow: 0 0 25px rgba(79, 70, 229, 0.3), 
                 inset 0 0 15px rgba(0, 212, 255, 0.1);
     
-    z-index: 1;
-    filter: grayscale(0.2) contrast(1.1); /* Rend la carte plus stylisée */
+    /* Important : z-index 1 pour que la carte reste sous le menu burger */
+    z-index: 1; 
+    filter: grayscale(0.2) contrast(1.1);
 }
 
-/* Personnalisation des popups Leaflet pour le thème sombre */
+/* --- Popups & Contrôles Leaflet --- */
 .leaflet-popup-content-wrapper {
     background: #1a1a1a !important;
     color: white !important;
     border: 1px solid var(--accent);
     border-radius: 10px;
+    font-family: 'Inter', sans-serif;
 }
 
 .leaflet-popup-tip {
     background: #1a1a1a !important;
 }
 
+.leaflet-control-zoom {
+    border: none !important;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+    background: #1a1a1a !important;
+    color: white !important;
+    border: 1px solid #333 !important;
+}
+
+.leaflet-marker-icon {
+    filter: hue-rotate(160deg) brightness(1.2);
+}
 /* Filtre pour rendre les icônes de marqueurs plus "bleutées" (optionnel) */
 .leaflet-marker-icon {
     filter: hue-rotate(160deg) brightness(1.2);
