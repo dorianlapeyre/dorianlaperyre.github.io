@@ -409,30 +409,40 @@ footer {
     filter: grayscale(1) brightness(0.5) contrast(1.2);
 }
 
-/* Style du marqueur "Point Néon" */
+/* Style du conteneur Leaflet qui accueille le divIcon */
+.custom-div-icon {
+    background: none !important;
+    border: none !important;
+}
+
+/* Le point central bleu */
 .neon-marker {
-    background: #4facfe;
+    width: 12px;
+    height: 12px;
+    background-color: #4facfe;
     border: 2px solid #ffffff;
     border-radius: 50%;
     box-shadow: 0 0 10px #4facfe, 0 0 20px #00f2fe;
-    position: relative;
+    display: block; /* Important pour l'affichage */
 }
 
-/* Animation de pulsation autour du point */
+/* L'animation de pulsation */
 .neon-marker::after {
     content: '';
     position: absolute;
-    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     border: 2px solid #4facfe;
     animation: pulsate 2s ease-out infinite;
-    opacity: 0;
 }
 
 @keyframes pulsate {
-    0% { transform: scale(0.6); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: scale(2.5); opacity: 0; }
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
 }
 
 /* Ajustement des Popups pour aller avec le bleu */
