@@ -189,7 +189,8 @@
             zoomControl: false 
         }).setView([44.5, 1.0], 6); 
         
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // Utilisation de tuiles claires pour permettre une inversion propre en CSS
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; CARTO'
         }).addTo(map);
         
