@@ -201,32 +201,42 @@
                 modal.style.display = "none";
             }
         }
-                // Initialisation de la carte
+             // Initialisation de la carte avec un fond sombre et sobre
         const map = L.map('experience-map', {
-            scrollWheelZoom: false // Empêche le zoom accidentel en scrollant la page
-        }).setView([44.5, -0.5], 6); 
+            scrollWheelZoom: false,
+            zoomControl: false // On cache les boutons +/- pour plus de sobriété
+        }).setView([45.0, 1.0], 6); 
         
-        // Utilisation d'un design de carte SOMBRE (CartoDB Dark Matter)
+        // Utilisation de tuiles minimalistes (Positron Dark)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap &copy; CARTO',
-            subdomains: 'abcd',
-            maxZoom: 20
+            attribution: '&copy; CARTO'
         }).addTo(map);
         
-        // Vos marqueurs (ajustez les coordonnées si besoin)
+        // Définition de l'icône personnalisée "Néon Bleu"
+        const neonIcon = L.divIcon({
+            className: 'custom-div-icon',
+            html: "<div class='neon-marker'></div>",
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
+        });
+        
         const experiences = [
             { lat: 43.6043, lng: 1.4437, title: "INSA Toulouse", desc: "Génie Mécanique" },
-            { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI/PC - Lycée Cassin" },
+            { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI/PC" },
             { lat: 43.4695, lng: -1.5204, title: "Anglet", desc: "Licence & Tutorat UPPA" },
             { lat: 43.2965, lng: 5.3698, title: "Marseille", desc: "Master Science de la Mer" },
             { lat: 43.6669, lng: -1.4397, title: "Hossegor", desc: "Sauvetage Côtier NSC" },
-            { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur & CSC" }
+            { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur" }
         ];
         
+        // Ajout des marqueurs avec l'icône néon
         experiences.forEach(exp => {
-            L.marker([exp.lat, exp.lng]).addTo(map)
-                .bindPopup(`<b style="color:#4f46e5">${exp.title}</b><br>${exp.desc}`);
+            L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
+                .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
         });
+        
+        // Forcer le rendu propre de la carte
+        setTimeout(() => { map.invalidateSize(); }, 500);
 
     </script>
 </body>
