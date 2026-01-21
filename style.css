@@ -399,20 +399,24 @@ footer {
     max-width: 1000px;
     margin: 40px auto;
     border-radius: 20px;
-    border: 1.5px solid rgba(79, 70, 229, 0.4);
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
-    background-color: #1a1a1a; /* Fond avant chargement */
+    border: 1.5px solid rgba(79, 172, 254, 0.4);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    background-color: #0a0a0a; /* Fond très sombre pour la profondeur */
 }
 
-/* Filtre pour rendre la carte grise uniforme (Saturate 0 + Invert pour le sombre) */
-.leaflet-tile-container {
-    filter: grayscale(1) brightness(0.5) contrast(1.2);
+/* CORRECTION : Filtre pour rendre la carte visible mais sobre.
+   On applique le filtre sur le pane pour éviter de masquer les tuiles.
+   Invert(100%) transforme les tuiles sombres en tracés clairs.
+*/
+.leaflet-tile-pane {
+    filter: grayscale(100%) invert(100%) brightness(85%) contrast(90%) opacity(0.7);
 }
 
 /* Style du conteneur Leaflet qui accueille le divIcon */
 .custom-div-icon {
     background: none !important;
     border: none !important;
+    z-index: 1000 !important; /* Force les points au-dessus de la carte */
 }
 
 /* Le point central bleu */
@@ -423,7 +427,8 @@ footer {
     border: 2px solid #ffffff;
     border-radius: 50%;
     box-shadow: 0 0 10px #4facfe, 0 0 20px #00f2fe;
-    display: block; /* Important pour l'affichage */
+    display: block;
+    position: relative;
 }
 
 /* L'animation de pulsation */
@@ -450,4 +455,9 @@ footer {
     background: #1a1a1a !important;
     border-left: 4px solid #4facfe !important;
     color: white !important;
+    border-radius: 10px !important;
+}
+
+.leaflet-popup-tip {
+    background: #1a1a1a !important;
 }
