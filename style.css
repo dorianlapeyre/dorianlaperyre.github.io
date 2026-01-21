@@ -401,45 +401,44 @@ footer {
     border-radius: 20px;
     border: 1.5px solid rgba(79, 172, 254, 0.4);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-    background-color: #0a0a0a; /* Fond très sombre pour la profondeur */
+    background-color: #0f172a; /* Couleur de fond "Océan" */
 }
 
-/* CORRECTION : Filtre pour rendre la carte visible mais sobre.
-   On applique le filtre sur le pane pour éviter de masquer les tuiles.
-   Invert(100%) transforme les tuiles sombres en tracés clairs.
-*/
+/* Ce filtre transforme les tuiles claires en carte sombre high-tech */
 .leaflet-tile-pane {
-    filter: grayscale(100%) invert(100%) brightness(85%) contrast(90%) opacity(0.7);
+    filter: grayscale(100%) invert(95%) brightness(20%) contrast(150%);
 }
 
-/* Style du conteneur Leaflet qui accueille le divIcon */
+/* Empêche les marqueurs d'être affectés par le filtre de la carte */
+.leaflet-marker-pane {
+    filter: none !important;
+}
+
 .custom-div-icon {
     background: none !important;
     border: none !important;
-    z-index: 1000 !important; /* Force les points au-dessus de la carte */
+    z-index: 1000 !important;
 }
 
-/* Le point central bleu */
 .neon-marker {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background-color: #4facfe;
     border: 2px solid #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 10px #4facfe, 0 0 20px #00f2fe;
+    box-shadow: 0 0 15px #4facfe, 0 0 5px #ffffff;
     display: block;
     position: relative;
 }
 
-/* L'animation de pulsation */
 .neon-marker::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     border: 2px solid #4facfe;
     animation: pulsate 2s ease-out infinite;
@@ -448,14 +447,6 @@ footer {
 @keyframes pulsate {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
     100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
-}
-
-/* Ajustement des Popups pour aller avec le bleu */
-.leaflet-popup-content-wrapper {
-    background: #1a1a1a !important;
-    border-left: 4px solid #4facfe !important;
-    color: white !important;
-    border-radius: 10px !important;
 }
 
 .leaflet-popup-tip {
