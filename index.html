@@ -8,10 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        /* Petit correctif pour s'assurer que Leaflet ne bloque pas l'affichage du néon */
+        .custom-div-icon { background: none !important; border: none !important; }
+    </style>
 </head>
 <body>
 
     <nav>
+        <div class="empty-space"></div>    
         <div class="burger-menu" id="burger-menu">
             <span></span>
             <span></span>
@@ -19,10 +24,9 @@
         </div>
 
         <div class="nav-links" id="nav-links">
-            <a href="#about">Académie</a>
-            <a href="#pro">Professionnel</a>
-            <a href="#asso">Associatif</a>
-            <a href="#timeline-section">Mon Parcours</a>
+            <a href="#about">Expériences académiques</a>
+            <a href="#pro">Expériences professionnelles</a>
+            <a href="#asso">Expériences associatives</a>
             <a href="javascript:void(0)" class="contact-trigger">Contact</a>
         </div>
     </nav>
@@ -42,34 +46,93 @@
         <div id="experience-map"></div>
     </section>
 
-    <section id="timeline-section">
-        <h2 class="center-text">Mon Parcours</h2>
-        <div class="timeline">
-            <div class="timeline-line"></div>
-
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="date">2019 - 2021</span>
-                    <h3>CPGE PCSI/PC</h3>
-                    <p>Classes préparatoires - Lycée Louis de Foix. Formation intensive en mathématiques et physique.</p>
+    <section id="about">
+        <h2 class="center-text">Expérience académique</h2>
+        <div class="grid">
+            <a href="pcsi.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/logo_0696992e-eda9-4ff8-9dee-37ef2ee30098.svg" alt="Logo CPGE"></div>
+                    <h3>CPGE</h3>
+                    <p>PCSI / PC</p>
+                    <span>En savoir plus →</span>
                 </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <span class="date">2021 - 2024</span>
-                    <h3>Licence Physique-Chimie</h3>
-                    <p>Diplôme obtenu à l'UPPA. Spécialisation en thermodynamique et mécanique des fluides.</p>
+            </a>
+            <a href="licence.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA"></div>
+                    <h3>Licence</h3>
+                    <p>Physique-Chimie</p>
+                    <span>En savoir plus →</span>
                 </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="date">Depuis 2024</span>
-                    <h3>Master Science de la Mer</h3>
-                    <p>Parcours Océan Physique Biogéochimie (OPB) à l'OSU Pythéas. Étude dynamique des océans.</p>
+            </a>
+            <a href="insa.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_INSAToulouse-quadri.png" alt="Logo INSA"></div> 
+                    <h3>INSA Toulouse</h3>
+                    <p>Génie Mécanique</p>
+                    <span>En savoir plus →</span>
                 </div>
-            </div>
+            </a>
+            <a href="master.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/cropped-amu-logo.png" alt="Logo AMU"></div>
+                    <h3>Master</h3>
+                    <p>Science de la mer</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="siame.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/SIAME.png" alt="Logo SIAME"></div> 
+                    <h3>Stage de L3</h3>
+                    <p>Laboratoire SIAME</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="pro">
+        <h2 class="center-text">Expériences professionnelles</h2>
+        <div class="grid">
+            <a href="smgbl.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/logo-smgbl.jpg" alt="Logo SMGBL"></div>
+                    <h3>Nageur sauveteur</h3>
+                    <p>SMGBL (Littoral Landais)</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="tuteur.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA"></div>
+                    <h3>Tuteur</h3>
+                    <p>Accompagnement universitaire</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="asso">
+        <h2 class="center-text">Expériences associatives</h2>
+        <div class="grid">
+            <a href="nsc.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_NSC.png" alt="Logo NSC"></div>
+                    <h3>Sauvetage Côtier</h3>
+                    <p>NSC (Hossegor)</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="csc.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_CSC.png" alt="Logo CSC"></div>
+                    <h3>Bénévole</h3>
+                    <p>Capbreton Sauvetage Côtier</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -90,49 +153,70 @@
     </div>
 
     <script>
-        // Gestion Menu Burger
+        // --- GESTION NAVIGATION & MODALE ---
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
-        burgerMenu.onclick = () => {
-            navLinks.classList.toggle('active');
-            burgerMenu.classList.toggle('active');
-        };
-
-        // Gestion Modale
         const modal = document.getElementById("contact-modal");
         const contactTriggers = document.querySelectorAll(".contact-trigger");
         const spanClose = document.querySelector(".close-button");
 
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         contactTriggers.forEach(trigger => {
-            trigger.onclick = () => {
+            trigger.onclick = function() {
                 modal.style.display = "block";
+                burgerMenu.classList.remove('active');
                 navLinks.classList.remove('active');
             }
         });
+
         spanClose.onclick = () => modal.style.display = "none";
         window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 
-        // Carte Leaflet
-        const map = L.map('experience-map', { scrollWheelZoom: false, zoomControl: false }).setView([44.5, 1.0], 6); 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
-        
+        // --- INITIALISATION CARTE ---
+        const map = L.map('experience-map', {
+            scrollWheelZoom: false,
+            zoomControl: false 
+        }).setView([44.5, 1.0], 6); 
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // Utilisation de tuiles claires pour permettre une inversion propre en CSS
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; CARTO'
+        }).addTo(map);
+
         const neonIcon = L.divIcon({
             className: 'custom-div-icon',
             html: "<div class='neon-marker'></div>",
-            iconSize: [12, 12], iconAnchor: [6, 6]
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
         });
 
-        // Animation Timeline au scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.2 });
+        const experiences = [
+            { lat: 43.6043, lng: 1.4437, title: "INSA Toulouse", desc: "Génie Mécanique" },
+            { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI/PC" },
+            { lat: 43.4695, lng: -1.5204, title: "Anglet", desc: "Licence & Tutorat UPPA" },
+            { lat: 43.2965, lng: 5.3698, title: "Marseille", desc: "Master Science de la Mer" },
+            { lat: 43.6669, lng: -1.4397, title: "Hossegor", desc: "Sauvetage Côtier NSC" },
+            { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur" }
+        ];
 
-        document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
+        experiences.forEach(exp => {
+            L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
+                .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
+        });
 
-        // Correction bug d'affichage Leaflet
-        window.onload = () => { setTimeout(() => { map.invalidateSize(); }, 400); };
+        setTimeout(() => { map.invalidateSize(); }, 500);
     </script>
 </body>
 </html>
