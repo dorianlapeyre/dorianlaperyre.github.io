@@ -9,8 +9,18 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
-        /* Petit correctif pour s'assurer que Leaflet ne bloque pas l'affichage du néon */
         .custom-div-icon { background: none !important; border: none !important; }
+
+        /* Styles pour l'animation d'apparition de la timeline */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -24,9 +34,10 @@
         </div>
 
         <div class="nav-links" id="nav-links">
-            <a href="#about">Expériences académiques</a>
-            <a href="#pro">Expériences professionnelles</a>
-            <a href="#asso">Expériences associatives</a>
+            <a href="#about">Académie</a>
+            <a href="#pro">Professionnel</a>
+            <a href="#asso">Associatif</a>
+            <a href="#timeline-section">Mon Parcours</a>
             <a href="javascript:void(0)" class="contact-trigger">Contact</a>
         </div>
     </nav>
@@ -44,6 +55,37 @@
             Explorez les lieux de mes expériences académiques, professionnelles et associatives.
         </p>
         <div id="experience-map"></div>
+    </section>
+
+    <section id="timeline-section">
+        <h2 class="center-text">Mon Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span class="date">2019 - 2021</span>
+                    <h3>CPGE PCSI/PC</h3>
+                    <p>Classes préparatoires aux grandes écoles - Lycée Louis de Foix. Formation intensive en mathématiques et physique.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <span class="date">2021 - 2024</span>
+                    <h3>Licence Physique-Chimie</h3>
+                    <p>Diplôme obtenu à l'UPPA. Spécialisation en thermodynamique, mécanique des fluides et début du projet océanographique.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span class="date">Depuis 2024</span>
+                    <h3>Master Science de la Mer</h3>
+                    <p>Parcours Océan Physique Biogéochimie (OPB) à l'OSU Pythéas. Étude dynamique des océans et biogéochimie marine.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="about">
@@ -153,7 +195,6 @@
     </div>
 
     <script>
-        // --- GESTION NAVIGATION & MODALE ---
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
         const modal = document.getElementById("contact-modal");
@@ -183,13 +224,11 @@
         spanClose.onclick = () => modal.style.display = "none";
         window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 
-        // --- INITIALISATION CARTE ---
         const map = L.map('experience-map', {
             scrollWheelZoom: false,
             zoomControl: false 
         }).setView([44.5, 1.0], 6); 
         
-        // Utilisation de tuiles claires pour permettre une inversion propre en CSS
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; CARTO'
         }).addTo(map);
@@ -215,6 +254,23 @@
                 .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
         });
         
+        // --- ANIMATION TIMELINE AU SCROLL ---
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
         setTimeout(() => { map.invalidateSize(); }, 500);
     </script>
 </body>
