@@ -1,263 +1,171 @@
-  /* ==========================================================================
-   1. RESET ET BASES (SÉCURISÉ)
-   ========================================================================== */
+/* ==========================================================================
+   1. RESET ET VARIABLES
+   ========================================================================== */
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-    background-color: #0f0f0f;
-    color: #e0e0e0;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
 }
 
 :root {
-    --bg-color: #0f0f0f;
-    --card-bg: #1a1a1a;
-    --text-main: #e0e0e0;
-    --text-dim: #a0a0a0;
-    --accent: #4f46e5;
+    --bg-color: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --accent: #4f46e5;
 }
 
 /* ==========================================================================
-   2. HEADER DYNAMIQUE (L'OCÉAN)
-   ========================================================================== */
+   2. HEADER ET NAVIGATION
+   ========================================================================== */
 header.main-header {
-    position: relative;
-    width: 100vw;
-    min-height: 85vh; /* Légèrement plus haut pour l'impact visuel */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #050a0f;
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: #050a0f;
 }
 
 .animated-waves {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    background: 
-        radial-gradient(circle at 30% 20%, #0a1e3b 0%, transparent 45%),
-        radial-gradient(circle at 75% 85%, #071629 0%, transparent 50%),
-        #050a0f;
-    background-size: 150% 150%;
-    animation: deepOcean 15s ease-in-out infinite alternate;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    background: radial-gradient(circle at 30% 20%, #0a1e3b 0%, transparent 45%),
+                radial-gradient(circle at 75% 85%, #071629 0%, transparent 50%), #050a0f;
 }
 
-.animated-waves::after {
-    content: "";
-    position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
-    background-image: 
-        radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%),
-        repeating-linear-gradient(110deg, transparent 0%, transparent 8%, rgba(255,255,255,0.015) 9%, transparent 11%);
-    background-size: 100% 100%, 400px 400px;
-    animation: randomFoam 25s linear infinite;
-    opacity: 0.8;
-    filter: blur(1.5px);
-}
+.header-name { position: relative; z-index: 2; font-size: 3rem; font-weight: 700; color: white; margin-bottom: 10px; }
+header.main-header h1 { position: relative; z-index: 2; font-size: 2.5rem; margin: 10px 15%; color: white; }
+header.main-header p { position: relative; z-index: 2; font-size: 1.1rem; color: var(--text-dim); max-width: 800px; }
+.highlight { color: #818cf8; }
 
-/* --- Styles spécifiques au texte du header --- */
-.header-name {
-    position: relative;
-    z-index: 2;
-    font-size: 3rem; /* Gros nom centré */
-    font-weight: 700;
-    color: white;
-    margin-bottom: 10px;
-}
-
-header.main-header h1 {
-    position: relative;
-    z-index: 2;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: white;
-    margin: 10px 15%;
-}
-
-header.main-header p {
-    position: relative;
-    z-index: 2;
-    font-size: 1.2rem;
-    color: var(--text-dim);
-    max-width: 800px;
-    margin: 10px 15%;
-}
-
-header.main-header .highlight { color: #818cf8; }
-
-@keyframes deepOcean {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-@keyframes randomFoam {
-    0% { transform: translate(0,0) rotate(0deg) scale(1); }
-    50% { transform: translate(-1%, -1%) rotate(1deg) scale(1.05); }
-    100% { transform: translate(0,0) rotate(0deg) scale(1); }
-}
-
-/* ==========================================================================
-   3. NAVIGATION
-   ========================================================================== */
 nav {
-    display: flex;
-    justify-content: flex-end; /* Pour garder le burger à droite */
-    padding: 1.5rem 10%;
-    align-items: center;
-    position: absolute;
-    top: 0; left: 0; width: 100%;
-    z-index: 1002;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.5rem 10%;
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    z-index: 1002;
+    box-sizing: border-box;
 }
-
-.burger-menu { display: flex; flex-direction: column; width: 30px; cursor: pointer; gap: 5px; z-index: 1005; }
-.burger-menu span { display: block; width: 100%; height: 3px; background-color: white; border-radius: 2px; }
 
 .nav-links {
-    position: absolute; top: 100%; right: 10%; width: 280px;
-    background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
-    display: flex; flex-direction: column; padding: 10px; border-radius: 15px;
-    border: 1px solid rgba(79, 70, 229, 0.3); opacity: 0; visibility: hidden;
-    transition: 0.3s; z-index: 1001;
+    position: absolute; top: 100%; right: 10%; width: 280px;
+    background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; padding: 10px; border-radius: 15px;
+    opacity: 0; visibility: hidden; transition: 0.3s;
 }
 .nav-links.active { opacity: 1; visibility: visible; }
 .nav-links a { color: white; text-decoration: none; padding: 15px; font-weight: 600; }
-.nav-links a:hover { background: var(--accent); border-radius: 10px; }
+
+.burger-menu { display: flex; flex-direction: column; width: 30px; cursor: pointer; gap: 5px; }
+.burger-menu span { display: block; width: 100%; height: 3px; background-color: white; }
 
 /* ==========================================================================
-   4. SECTIONS ET CARTES (VERSION COMPACTE)
+   3. GRILLE DE CARTES (COMPACTE)
    ========================================================================== */
 section { padding: 60px 10%; border-top: 1px solid #222; }
+.center-text { text-align: center; margin-bottom: 30px; }
 
 .grid { 
     display: flex; 
     flex-wrap: wrap; 
     justify-content: center; 
-    gap: 15px; /* Réduit l'espace entre les cartes */
+    gap: 20px; 
 }
 
 .card-link { 
     text-decoration: none; 
     color: inherit; 
-    display: block; 
-    flex: 1 1 220px; /* Plus petit (était 300px) */
-    max-width: 260px; /* Largeur max réduite (était 350px) */
+    flex: 1 1 220px; 
+    max-width: 260px; 
 }
 
 .card {
     background: var(--card-bg);
-    padding: 15px; /* Réduit drastiquement le vide interne (était 30px) */
+    padding: 20px 15px; /* Équilibré pour réduire le vide */
     border-radius: 12px;
     border: 1px solid #333;
-    transition: 0.3s ease;
+    transition: 0.3s;
     height: 100%;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
 }
 
-.card:hover { 
-    transform: translateY(-5px); 
-    border-color: var(--accent); 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+.card-logo img { 
+    max-height: 45px; /* Taille logo maîtrisée */
+    max-width: 100%;
+    margin-bottom: 15px;
 }
 
-.card-logo { 
-    height: 45px; /* Logos plus petits (était 60px) */
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-bottom: 10px; /* Moins d'espace sous le logo */
+.card h3 { font-size: 1.1rem; margin: 10px 0 5px; color: white; }
+.card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px; flex-grow: 1; }
+.card span { font-size: 0.8rem; color: var(--accent); font-weight: bold; }
+
+/* ==========================================================================
+   4. TIMELINE INTERACTIVE (ACCUEIL)
+   ========================================================================== */
+.timeline { position: relative; max-width: 1000px; margin: 40px auto; padding: 20px 0; }
+.timeline-line {
+    position: absolute; left: 50%; width: 2px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    transform: translateX(-50%);
 }
 
-.card h3 { 
-    margin: 5px 0; 
-    font-size: 1.1rem; /* Texte plus petit (était 1.4rem) */
-    color: white; 
+.timeline-item { 
+    width: 50%; margin-bottom: 30px; position: relative; 
+    opacity: 0; transform: translateY(20px); transition: 0.6s ease-out;
 }
+.timeline-item.visible { opacity: 1; transform: translateY(0); }
 
-.card p { 
-    color: var(--text-dim); 
-    margin-bottom: 8px; 
-    font-size: 0.85rem; /* Description plus discrète */
+.timeline-item.left { left: 0; padding-right: 40px; text-align: right; }
+.timeline-item.right { left: 50%; padding-left: 40px; text-align: left; }
+
+.timeline-item::after {
+    content: ''; position: absolute; width: 12px; height: 12px;
+    background: var(--accent); border-radius: 50%; top: 25px; z-index: 5;
 }
+.timeline-item.left::after { right: -6px; }
+.timeline-item.right::after { left: -6px; }
 
-.card span { 
-    color: var(--accent); /* Utilise la couleur accent pour le lien */
-    font-weight: bold; 
-    font-size: 0.8rem; 
+.timeline-content {
+    background: var(--card-bg); padding: 15px 20px;
+    border-radius: 15px; border: 1px solid #333;
 }
 
 /* ==========================================================================
-   5. MODALE DE CONTACT
-   ========================================================================== */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0; top: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
+   5. CARTE (MAP)
+   ========================================================================== */
+#experience-map {
+    height: 450px; width: 100%; max-width: 1000px;
+    margin: 20px auto; border-radius: 15px; border: 1px solid #333;
 }
-
-.modal-content {
-    background: var(--card-bg);
-    margin: 15vh auto;
-    padding: 40px;
-    border-radius: 20px;
-    width: 320px;
-    position: relative;
-    border: 1px solid var(--accent);
-    text-align: center;
-}
-
-.close-button {
-    position: absolute;
-    top: 15px; right: 20px;
-    font-size: 28px;
-    color: var(--text-dim);
-    cursor: pointer;
-}
-
-.contact-links { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
-
-.contact-item {
-    text-decoration: none;
-    color: white;
-    padding: 12px;
-    background: #252525;
-    border-radius: 10px;
-    transition: 0.3s;
-    font-weight: 600;
-}
-
-.contact-item:hover { background: var(--accent); transform: scale(1.05); }
+.leaflet-tile-pane { filter: grayscale(100%) invert(95%) brightness(20%) contrast(150%); }
 
 /* ==========================================================================
-   6. FOOTER
-   ========================================================================== */
-footer {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    border-top: 1px solid #222;
+   6. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .timeline-line { left: 20px; }
+    .timeline-item { width: 100%; left: 0 !important; padding-left: 45px !important; text-align: left !important; }
+    .timeline-item::after { left: 14px !important; }
+    header.main-header h1 { font-size: 1.8rem; }
 }
-/* ==========================================================================
-   7. STYLES POUR LES PAGES DE DÉTAILS (TIMELINE & MODERNE)
-   ========================================================================== */
-
-/* Structure globale de la page de détail */
 /* ==========================================================================
    7. STYLES POUR LES PAGES DE DÉTAILS (VERSION OPTIMISÉE)
    ========================================================================== */
