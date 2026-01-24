@@ -450,6 +450,19 @@ footer {
    8. CARTE SOBRE ET MARQUEURS NÉON
    ========================================================================== */
 
+/* --- CORRECTION CARTE --- */
+
+/* Ce filtre transforme les tuiles CLAIRES en carte SOMBRE high-tech */
+.leaflet-tile-pane {
+    /* Suppression des doublons : on utilise un seul filtre équilibré */
+    filter: grayscale(100%) invert(100%) brightness(90%) contrast(90%);
+}
+
+/* On s'assure que les marqueurs ne sont PAS inversés (sinon ils seraient orange au lieu de bleu) */
+.leaflet-marker-pane, .leaflet-shadow-pane, .leaflet-popup-pane {
+    filter: none !important;
+}
+
 #experience-map {
     height: 500px;
     width: 100%;
@@ -458,23 +471,7 @@ footer {
     border-radius: 20px;
     border: 1.5px solid rgba(79, 172, 254, 0.4);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-    background-color: #0a0a0a; /* Fond très sombre pour la profondeur */
-    background-color: #0f172a; /* Couleur de fond "Océan" */
-}
-
-/* CORRECTION : Filtre pour rendre la carte visible mais sobre.
-   On applique le filtre sur le pane pour éviter de masquer les tuiles.
-   Invert(100%) transforme les tuiles sombres en tracés clairs.
-*/
-/* Ce filtre transforme les tuiles claires en carte sombre high-tech */
-.leaflet-tile-pane {
-    filter: grayscale(100%) invert(100%) brightness(85%) contrast(90%) opacity(0.7);
-    filter: grayscale(100%) invert(95%) brightness(20%) contrast(150%);
-}
-
-/* Empêche les marqueurs d'être affectés par le filtre de la carte */
-.leaflet-marker-pane {
-    filter: none !important;
+    background-color: #050a0f; /* Fond bleu très sombre cohérent avec ton header */
 }
 
 /* Style du conteneur Leaflet qui accueille le divIcon */
