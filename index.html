@@ -152,26 +152,29 @@
         </div>
     </div>
 
-    <script>
+   <script>
         // --- GESTION NAVIGATION & MODALE ---
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
         const modal = document.getElementById("contact-modal");
         const contactTriggers = document.querySelectorAll(".contact-trigger");
         const spanClose = document.querySelector(".close-button");
-
+    
+        // Toggle Menu
         burgerMenu.addEventListener('click', () => {
             burgerMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-
+    
+        // Fermer le menu au clic sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerMenu.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
-
+    
+        // Modale Contact
         contactTriggers.forEach(trigger => {
             trigger.onclick = function() {
                 modal.style.display = "block";
@@ -179,29 +182,28 @@
                 navLinks.classList.remove('active');
             }
         });
-
+    
         spanClose.onclick = () => modal.style.display = "none";
         window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
-
+    
         // --- INITIALISATION CARTE ---
         const map = L.map('experience-map', {
             scrollWheelZoom: false,
             zoomControl: false 
         }).setView([44.5, 1.0], 6); 
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        // Utilisation de tuiles claires pour permettre une inversion propre en CSS
+    
+        // Correction de la syntaxe Leaflet ici
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; CARTO'
         }).addTo(map);
-
+    
         const neonIcon = L.divIcon({
             className: 'custom-div-icon',
             html: "<div class='neon-marker'></div>",
             iconSize: [12, 12],
             iconAnchor: [6, 6]
         });
-
+    
         const experiences = [
             { lat: 43.6043, lng: 1.4437, title: "INSA Toulouse", desc: "Génie Mécanique" },
             { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI/PC" },
@@ -210,12 +212,13 @@
             { lat: 43.6669, lng: -1.4397, title: "Hossegor", desc: "Sauvetage Côtier NSC" },
             { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur" }
         ];
-
+    
         experiences.forEach(exp => {
             L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
                 .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
         });
-
+    
+        // Invalider la taille après chargement pour éviter les carrés gris
         setTimeout(() => { map.invalidateSize(); }, 500);
     </script>
 </body>
