@@ -104,11 +104,11 @@ header.main-header .highlight { color: #818cf8; }
 }
 
 /* ==========================================================================
-   3. NAVIGATION
+   3. NAVIGATION (CORRIGÉE)
    ========================================================================== */
 nav {
     display: flex;
-    justify-content: flex-end; /* Pour garder le burger à droite */
+    justify-content: flex-end;
     padding: 1.5rem 10%;
     align-items: center;
     position: absolute;
@@ -117,19 +117,76 @@ nav {
     box-sizing: border-box;
 }
 
-.burger-menu { display: flex; flex-direction: column; width: 30px; cursor: pointer; gap: 5px; z-index: 1005; }
-.burger-menu span { display: block; width: 100%; height: 3px; background-color: white; border-radius: 2px; }
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1005;
+    transition: 0.3s;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation du Burger -> Croix quand la classe .active est ajoutée par le JS */
+.burger-menu.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger-menu.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
 
 .nav-links {
-    position: absolute; top: 100%; right: 10%; width: 280px;
-    background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
-    display: flex; flex-direction: column; padding: 10px; border-radius: 15px;
-    border: 1px solid rgba(79, 70, 229, 0.3); opacity: 0; visibility: hidden;
-    transition: 0.3s; z-index: 1001;
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    width: 280px;
+    background: rgba(26, 26, 26, 0.98);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    
+    /* État caché par défaut */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
 }
-.nav-links.active { opacity: 1; visibility: visible; }
-.nav-links a { color: white; text-decoration: none; padding: 15px; font-weight: 600; }
-.nav-links a:hover { background: var(--accent); border-radius: 10px; }
+
+/* État affiché quand la classe .active est ajoutée */
+.nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    background: var(--accent);
+    border-radius: 10px;
+}
 
 /* ==========================================================================
    4. SECTIONS ET CARTES (CONSERVÉES)
