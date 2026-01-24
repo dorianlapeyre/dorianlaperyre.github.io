@@ -190,9 +190,9 @@
         const map = L.map('experience-map', {
             scrollWheelZoom: false,
             zoomControl: false 
-        }).setView([44.5, 1.0], 6); 
-    
-        // Correction de la syntaxe Leaflet ici
+        }).setView([46.0, 2.0], 5); // Centré un peu plus haut pour mieux voir la France et l'Europe
+        
+        // UTILISER UNIQUEMENT CELUI-CI : Les tuiles claires s'inversent mieux en CSS
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; CARTO'
         }).addTo(map);
