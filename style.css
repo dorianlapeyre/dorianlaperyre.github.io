@@ -20,87 +20,83 @@ html, body {
     --accent: #4f46e5;
 }
 
+
 /* ==========================================================================
-   2. HEADER DYNAMIQUE (L'OCÉAN)
+   2. HEADER DYNAMIQUE (VAGUES ÉPURÉES)
    ========================================================================== */
 header.main-header {
     position: relative;
     width: 100vw;
-    min-height: 85vh; /* Légèrement plus haut pour l'impact visuel */
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    background: #050a0f; /* Bleu très foncé profond */
     overflow: hidden;
-    background-color: #050a0f;
 }
 
-.animated-waves {
+.ocean-waves {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh; /* Hauteur des vagues en bas du header */
+    min-height: 100px;
+    max-height: 150px;
     z-index: 1;
-    background: 
-        radial-gradient(circle at 30% 20%, #0a1e3b 0%, transparent 45%),
-        radial-gradient(circle at 75% 85%, #071629 0%, transparent 50%),
-        #050a0f;
-    background-size: 150% 150%;
-    animation: deepOcean 15s ease-in-out infinite alternate;
 }
 
-.animated-waves::after {
-    content: "";
-    position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
-    background-image: 
-        radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%),
-        repeating-linear-gradient(110deg, transparent 0%, transparent 8%, rgba(255,255,255,0.015) 9%, transparent 11%);
-    background-size: 100% 100%, 400px 400px;
-    animation: randomFoam 25s linear infinite;
-    opacity: 0.8;
-    filter: blur(1.5px);
-}
-
-/* --- Styles spécifiques au texte du header --- */
-.header-name {
+.waves {
     position: relative;
-    z-index: 2;
-    font-size: 3rem; /* Gros nom centré */
+    width: 100%;
+    height: 100%;
+}
+
+/* Animation des vagues */
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+@keyframes move-forever {
+    0% { transform: translate3d(-90px,0,0); }
+    100% { transform: translate3d(85px,0,0); }
+}
+
+/* --- Styles du texte pour ressortir sur les vagues --- */
+.header-name, header.main-header h1, header.main-header p {
+    position: relative;
+    z-index: 2; /* S'assure que le texte est au-dessus des vagues */
+}
+
+.header-name {
+    font-size: 3rem;
     font-weight: 700;
     color: white;
     margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 header.main-header h1 {
-    position: relative;
-    z-index: 2;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: white;
+    font-size: 2.2rem;
+    color: #f8fafc;
     margin: 10px 15%;
 }
 
-header.main-header p {
-    position: relative;
-    z-index: 2;
-    font-size: 1.2rem;
-    color: var(--text-dim);
-    max-width: 800px;
-    margin: 10px 15%;
+header.main-header .highlight { 
+    color: #60a5fa; /* Bleu ciel plus doux */
 }
 
-header.main-header .highlight { color: #818cf8; }
-
-@keyframes deepOcean {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-@keyframes randomFoam {
-    0% { transform: translate(0,0) rotate(0deg) scale(1); }
-    50% { transform: translate(-1%, -1%) rotate(1deg) scale(1.05); }
-    100% { transform: translate(0,0) rotate(0deg) scale(1); }
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .ocean-waves { height: 40px; min-height: 40px; }
+    .header-name { font-size: 2rem; }
+    header.main-header h1 { font-size: 1.5rem; }
 }
 
 /* ==========================================================================
