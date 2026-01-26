@@ -530,58 +530,83 @@ footer {
    ========================================================================== */
 
 .infographie-container {
-    padding: 60px 10%; /* 10% de marge de chaque côté */
+    padding: 80px 10%; /* Marge généreuse de 10% sur les côtés */
     max-width: 1200px;
     margin: 0 auto;
+    box-sizing: border-box; /* Garantit que le padding ne casse pas la largeur */
+}
+
+.info-block {
+    margin-bottom: 40px; /* Espace entre chaque article */
+    padding: 25px 30px;  /* Espace interne pour que le texte ne colle pas aux bords du bloc */
+    transition: all 0.3s ease;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 10px 10px 0;
 }
 
 .info-block p {
     margin-bottom: 1.5rem;
-    line-height: 1.7;
-    text-align: justify; /* Pour des blocs de texte propres */
+    line-height: 1.8;
+    text-align: justify;
+    color: var(--text-dim); /* Utilise ta variable de couleur de texte si définie */
 }
 
 .info-block:hover {
     border-left-color: var(--accent);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(5px); /* Petit effet de glissement au survol */
 }
 
 .info-block h3 {
     color: #60a5fa;
     font-size: 1.6rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .icon-accent {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     filter: drop-shadow(0 0 5px var(--accent));
 }
 
 .lead-text {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
-/* Bloc Sauveteur mis en avant */
+/* Bloc Sauveteur & Expériences clés mis en avant */
 .highlight-block {
-    background: rgba(79, 70, 229, 0.05);
+    background: rgba(79, 172, 254, 0.07); /* Bleu léger pour rappeler ton thème */
     border-radius: 0 15px 15px 0;
     border-left: 4px solid var(--accent);
 }
 
 .infographie-container strong {
-    color: white;
+    color: white; /* Rend le gras bien visible sur fond sombre */
+    font-weight: 600;
 }
 
+/* Adaptation pour les écrans mobiles */
 @media (max-width: 768px) {
-    .info-block {
-        padding: 10px;
+    .infographie-container {
+        padding: 40px 6%; /* Réduction de la marge latérale sur mobile pour gagner de la place */
     }
+
+    .info-block {
+        padding: 20px 15px; /* Moins d'espace interne sur mobile */
+        text-align: left;    /* On enlève souvent le justify sur mobile pour éviter les grands blancs */
+    }
+
     .info-block h3 {
         font-size: 1.3rem;
+        flex-wrap: wrap; /* Évite que le titre ne dépasse si l'émoji + texte est trop long */
+    }
+
+    .info-block p {
+        text-align: left; /* Meilleure lisibilité sur petit écran */
     }
 }
