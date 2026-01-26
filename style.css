@@ -525,3 +525,64 @@ footer {
 .leaflet-popup-tip {
     background: #1a1a1a !important;
 }
+/* ==========================================================================
+   9. SECTION INFOGRAPHIE (STYLISÉE)
+   ========================================================================== */
+
+.infographie-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #0f0f0f;
+}
+
+.info-block {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-left: 2px solid #222;
+    transition: all 0.3s ease;
+}
+
+.info-block:hover {
+    border-left-color: var(--accent);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.info-block h3 {
+    color: #60a5fa;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-accent {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px var(--accent));
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Bloc Sauveteur mis en avant */
+.highlight-block {
+    background: rgba(79, 70, 229, 0.05);
+    border-radius: 0 15px 15px 0;
+    border-left: 4px solid var(--accent);
+}
+
+.infographie-container strong {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .info-block {
+        padding: 10px;
+    }
+    .info-block h3 {
+        font-size: 1.3rem;
+    }
+}
