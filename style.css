@@ -530,16 +530,15 @@ footer {
    ========================================================================== */
 
 .infographie-container {
-    max-width: 900px;
+    padding: 60px 10%; /* 10% de marge de chaque côté */
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: #0f0f0f;
 }
 
-.info-block {
-    margin-bottom: 40px;
-    padding: 20px;
-    border-left: 2px solid #222;
-    transition: all 0.3s ease;
+.info-block p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    text-align: justify; /* Pour des blocs de texte propres */
 }
 
 .info-block:hover {
