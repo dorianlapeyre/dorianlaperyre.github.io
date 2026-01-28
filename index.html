@@ -233,29 +233,62 @@
         </div>
     </section>
     <section id="real-time-data">
-        <h2 class="center-text">Conditions Océanographiques en Direct</h2>
-        <div class="data-grid">
-            <div class="city-column">
-                <h3>📍 Marseille (Endoume)</h3>
-                <div class="metrics-container" id="data-marseille">
-                    <div class="metric-card"><span>Temp. Eau</span><strong class="val">-</strong></div>
-                    <div class="metric-card"><span>Hauteur Vagues</span><strong class="val">-</strong></div>
-                    <div class="metric-card"><span>Période</span><strong class="val">-</strong></div>
-                    <div class="metric-card"><span>Vent</span><strong class="val">-</strong></div>
+        <h2 class="center-text">Monitoring Océanographique</h2>
+        
+        <div class="dashboard-container">
+            <div class="glass-card city-card">
+                <div class="card-header">
+                    <span class="status-dot pulse"></span>
+                    <h3>Marseille (Endoume)</h3>
+                </div>
+                <div class="stats-grid" id="data-marseille">
+                    <div class="stat-box">
+                        <span class="label">Océan</span>
+                        <div class="main-val"><span class="temp-eau">-</span>°C</div>
+                        <div class="sub-val">Vagues: <span class="vague-h">-</span>m</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Atmosphère</span>
+                        <div class="main-val"><span class="vent-v">-</span> <small>km/h</small></div>
+                        <div class="sub-val">Dir: <span class="vent-d">-</span></div>
+                    </div>
+                    <div class="stat-box full-width">
+                        <span class="label">Physique des vagues</span>
+                        <div class="mini-grid">
+                            <div>Période: <strong class="vague-p">-</strong>s</div>
+                            <div>Énergie: <strong class="vague-e">-</strong> J/m²</div>
+                        </div>
+                    </div>
                 </div>
             </div>
     
-            <div class="city-column">
-                <h3>📍 Capbreton (Gouf)</h3>
-                <div class="metrics-container" id="data-capbreton">
-                    <div class="metric-card"><span>Temp. Eau</span><strong class="val">-</strong></div>
-                    <div class="metric-card"><span>Hauteur Vagues</span><strong class="val">-</strong></div>
-                    <div class="metric-card"><span>Période</span><strong class="val">-</strong></div>
-                    <div class="metric-card"><span>Vent</span><strong class="val">-</strong></div>
+            <div class="glass-card city-card">
+                <div class="card-header">
+                    <span class="status-dot pulse"></span>
+                    <h3>Capbreton (Gouf)</h3>
+                </div>
+                <div class="stats-grid" id="data-capbreton">
+                    <div class="stat-box">
+                        <span class="label">Océan</span>
+                        <div class="main-val"><span class="temp-eau">-</span>°C</div>
+                        <div class="sub-val">Vagues: <span class="vague-h">-</span>m</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Atmosphère</span>
+                        <div class="main-val"><span class="vent-v">-</span> <small>km/h</small></div>
+                        <div class="sub-val">Dir: <span class="vent-d">-</span></div>
+                    </div>
+                    <div class="stat-box full-width">
+                        <span class="label">Physique des vagues</span>
+                        <div class="mini-grid">
+                            <div>Période: <strong class="vague-p">-</strong>s</div>
+                            <div>Énergie: <strong class="vague-e">-</strong> J/m²</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <p class="source-hint">Données actualisées via Open-Meteo Marine API</p>
+        <p class="source-hint">Flux de données synchronisé • Open-Meteo Marine</p>
     </section>
 
     <footer>
