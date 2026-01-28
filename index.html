@@ -342,6 +342,41 @@
     
         // Invalider la taille après chargement pour éviter les carrés gris
         setTimeout(() => { map.invalidateSize(); }, 500);
+    async function getMarineData() {
+        const locations = {
+            marseille: { lat: 43.29, lon: 5.36, id: "data-marseille" },
+            capbreton: { lat: 43.64, lon: -1.44, id: "data-capbreton" }
+        };
+    
+        for (let key in locations) {
+            const loc = locations[key];
+            try {
+                const response = await fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${loc.lat}&longitude=${loc.lon}&current=wave_height,wave_direction,wave_period,wind_wave_height&hourly=swell_wave_peak_period&timezone=Europe%2FBerlin`);
+                const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m`);
+                
+                const data = await response.json();
+                const wData = await weatherRes.json();
+    
+                const container = document.getElementById(loc.id);
+                const cards = container.getElementsByClassName('val');
+    
+                cards[0].innerText = `${wData.current.temperature_2m}°C`; // Temp (Air/Surf)
+                cards[1].innerText = `${data.current.wave_height}m ${getArrow(data.current.wave_direction)}`;
+                cards[2].innerText = `${data.current.wave_period}s`;
+                cards[3].innerText = `${wData.current.wind_speed_10m}km/h ${getArrow(wData.current.wind_direction_10m)}`;
+    
+            } catch (error) {
+                console.error("Erreur API:", error);
+            }
+        }
+    }
+    
+    function getArrow(deg) {
+        const arrows = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
+        return arrows[Math.round(deg / 45) % 8];
+    }
+    
+    getMarineData();
     </script>
 </body>
 </html>
