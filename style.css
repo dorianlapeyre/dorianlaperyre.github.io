@@ -652,3 +652,33 @@ footer {
         padding: 10px;
     }
 }
+/* ==========================================================================
+   11 SECTION RAPPORT PDF (PORTRAIT)
+   ========================================================================== */
+.pdf-wrapper {
+    max-width: 800px; /* Plus étroit que le PPT car c'est du portrait */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.pdf-container {
+    position: relative;
+    width: 100%;
+    height: 800px; /* Hauteur fixe pour permettre le défilement interne */
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid rgba(79, 70, 229, 0.4);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pdf-container iframe {
+    border: none;
+}
+
+/* Ajustement pour mobile : on réduit la hauteur pour que l'écran ne soit pas bloqué */
+@media (max-width: 768px) {
+    .pdf-container {
+        height: 500px;
+    }
+}
