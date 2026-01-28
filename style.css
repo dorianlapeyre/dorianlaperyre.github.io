@@ -664,15 +664,23 @@ footer {
 .pdf-container {
     position: relative;
     width: 100%;
-    height: 800px; /* Hauteur fixe pour permettre le défilement interne */
-    background: var(--card-bg);
-    border-radius: 15px;
+    /* On définit une hauteur max basée sur la largeur pour garder le format A4 */
+    aspect-ratio: 1 / 1.41; 
+    max-height: 90vh; /* Évite que le PDF ne soit trop long sur les grands écrans */
+    background: #525659; /* Couleur grise standard des lecteurs PDF */
+    border-radius: 12px;
     border: 1px solid rgba(79, 70, 229, 0.4);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
 }
 
 .pdf-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border: none;
 }
 
