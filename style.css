@@ -745,3 +745,63 @@ footer {
         grid-template-columns: 1fr 1fr; /* Deux colonnes sur mobile */
     }
 }
+/* ==========================================================================
+   12 Data marine
+   ========================================================================== */
+.data-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.city-column {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(26, 26, 26, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+.city-column h3 {
+    color: #60a5fa;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.metrics-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.metric-card {
+    background: #111;
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 3px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-card span {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.metric-card strong {
+    font-size: 1.1rem;
+    color: white;
+}
+
+.source-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 20px;
+}
