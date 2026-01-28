@@ -375,41 +375,45 @@
     
         // Invalider la taille après chargement pour éviter les carrés gris
         setTimeout(() => { map.invalidateSize(); }, 500);
-    async function getMarineData() {
-        const locations = {
-            marseille: { lat: 43.29, lon: 5.36, id: "data-marseille" },
-            capbreton: { lat: 43.64, lon: -1.44, id: "data-capbreton" }
-        };
-    
-        for (let key in locations) {
-            const loc = locations[key];
-            try {
-                const response = await fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${loc.lat}&longitude=${loc.lon}&current=wave_height,wave_direction,wave_period,wind_wave_height&hourly=swell_wave_peak_period&timezone=Europe%2FBerlin`);
-                const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m`);
-                
-                const data = await response.json();
-                const wData = await weatherRes.json();
-    
-                const container = document.getElementById(loc.id);
-                const cards = container.getElementsByClassName('val');
-    
-                cards[0].innerText = `${wData.current.temperature_2m}°C`; // Temp (Air/Surf)
-                cards[1].innerText = `${data.current.wave_height}m ${getArrow(data.current.wave_direction)}`;
-                cards[2].innerText = `${data.current.wave_period}s`;
-                cards[3].innerText = `${wData.current.wind_speed_10m}km/h ${getArrow(wData.current.wind_direction_10m)}`;
-    
-            } catch (error) {
-                console.error("Erreur API:", error);
+        async function updateDashboard() {
+            const spots = {
+                marseille: { lat: 43.29, lon: 5.36, el: "data-marseille" },
+                capbreton: { lat: 43.64, lon: -1.44, el: "data-capbreton" }
+            };
+        
+            for (let s in spots) {
+                const p = spots[s];
+                try {
+                    const resM = await fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${p.lat}&longitude=${p.lon}&current=wave_height,wave_direction,wave_period`);
+                    const resW = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m`);
+                    
+                    const dm = await resM.json();
+                    const dw = await resW.json();
+                    const container = document.getElementById(p.el);
+        
+                    // Calcul Énergie (Approximation: 1/16 * rho * g * H^2)
+                    const h = dm.current.wave_height;
+                    const energy = Math.round((1/16) * 1025 * 9.81 * (h * h));
+        
+                    container.querySelector('.temp-eau').innerText = dw.current.temperature_2m;
+                    container.querySelector('.vague-h').innerText = h;
+                    container.querySelector('.vent-v').innerText = dw.current.wind_speed_10m;
+                    container.querySelector('.vent-d').innerText = getArrow(dw.current.wind_direction_10m);
+                    container.querySelector('.vague-p').innerText = dm.current.wave_period;
+                    container.querySelector('.vague-e').innerText = energy;
+        
+                } catch (e) { console.error("Data error", e); }
             }
         }
-    }
-    
-    function getArrow(deg) {
-        const arrows = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
-        return arrows[Math.round(deg / 45) % 8];
-    }
-    
-    getMarineData();
+        
+        function getArrow(d) {
+            const a = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
+            return a[Math.round(d / 45) % 8];
+        }
+        
+        updateDashboard();
+        setInterval(updateDashboard, 300000); // Mise à jour toutes les 5 min
+
     </script>
 </body>
 </html>
