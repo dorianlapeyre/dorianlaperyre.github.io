@@ -103,30 +103,52 @@ header.main-header .highlight {
    ========================================================================== */
 .header-profiles {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%); /* Centre verticalement par rapport au header */
+    z-index: 10;
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    z-index: 1003; /* Doit être au-dessus des vagues et du nav si besoin */
 }
 
 .profile-box {
-    width: 85px;
-    height: 85px;
+    width: 150px; /* Taille ajustable selon tes besoins */
+    height: 150px;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px; /* Coins arrondis modernes */
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
 }
-
 .profile-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garantit que ton portrait est bien cadré */
+    object-fit: cover; /* Important : pour que la photo ne soit pas déformée */
+}
+.profile-box:hover {
+    transform: scale(1.05);
+    border-color: #60a5fa;
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+/* Adaptation pour les petits écrans (Mobile) */
+@media (max-width: 1024px) {
+    .header-profiles {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    .profile-box {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 /* Ajustement pour le logo du master (souvent sur fond transparent) */
@@ -141,19 +163,6 @@ header.main-header .highlight {
     box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
 }
 
-/* Optimisation pour mobile (pour éviter de masquer le nom sur petit écran) */
-@media (max-width: 768px) {
-    .header-profiles {
-        top: 15px;
-        left: 15px;
-        gap: 12px;
-    }
-    .profile-box {
-        width: 60px;
-        height: 60px;
-        border-radius: 12px;
-    }
-}
 
 /* ==========================================================================
    3. NAVIGATION (CORRIGÉE)
