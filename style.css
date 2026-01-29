@@ -145,7 +145,54 @@ header.main-header .highlight {
         height: 60px;
     }
 }
+/* Conteneur principal pour centrer l'ensemble image + texte */
+.header-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Espace entre l'image et le texte */
+    z-index: 2;
+    padding: 0 10%;
+}
 
+/* L'encadré de votre portrait */
+.portrait-main {
+    width: 200px; /* Taille plus imposante sans être démesurée */
+    height: auto;
+    border-radius: 15px; /* Coins arrondis style moderne */
+    overflow: hidden;
+    border: 2px solid var(--accent); /* Rappel de votre couleur bleue */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; /* Empêche l'image de rétrécir */
+}
+
+.portrait-main img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Ajustement du bloc texte pour qu'il soit aligné à gauche par rapport à l'image */
+.header-text {
+    text-align: left;
+}
+
+/* Responsive : sur mobile, on repasse l'un au dessus de l'autre */
+@media (max-width: 768px) {
+    .header-intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .header-text {
+        text-align: center;
+    }
+
+    .portrait-main {
+        width: 150px;
+    }
+}
 /* ==========================================================================
    3. NAVIGATION (CORRIGÉE)
    ========================================================================== */
