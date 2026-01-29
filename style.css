@@ -101,7 +101,6 @@ header.main-header .highlight {
 /* ==========================================================================
    2.1 ENCADRÉS IMAGES HEADER (PORTRAIT & LOGO)
    ========================================================================== */
-/* --- Styles pour les petits encadrés photo --- */
 .header-profiles {
     position: absolute; /* Fixe les cadres par rapport au header */
     top: 20px;
