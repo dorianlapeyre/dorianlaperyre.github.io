@@ -113,8 +113,8 @@ header.main-header .highlight {
 }
 
 .profile-box {
-    width: 150px; /* Taille ajustable selon tes besoins */
-    height: 150px;
+    width: 220px; /* Taille ajustable selon tes besoins */
+    height: 220px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
