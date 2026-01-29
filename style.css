@@ -285,7 +285,12 @@ section { padding: 80px 10%; border-top: 1px solid #222; }
     align-items: center;     /* Assure un centrage vertical aussi */
     margin-bottom: 20px; 
 }
-.card-logo img { max-height: 100%; max-width: 150px; object-fit: contain; }
+.card-logo img { 
+    max-height: 100%; 
+    max-width: 150px; 
+    object-fit: contain; 
+    filter: none !important; /* Force la suppression du noir et blanc */
+}
 
 .card h3 { margin: 10px 0; font-size: 1.4rem; color: white; }
 .card p { color: var(--text-dim); margin-bottom: 15px; }
@@ -350,10 +355,6 @@ footer {
    7. STYLES POUR LES PAGES DE DÉTAILS (TIMELINE & MODERNE)
    ========================================================================== */
 
-/* Structure globale de la page de détail */
-/* ==========================================================================
-   7. STYLES POUR LES PAGES DE DÉTAILS (VERSION OPTIMISÉE)
-   ========================================================================== */
 
 .detail-page {
     padding-top: 40px;
@@ -509,20 +510,21 @@ footer {
     margin-bottom: 0;
 }
 /* ==========================================================================
-   8. CARTE SOBRE ET MARQUEURS NÉON
+   8. CARTE SOBRE ET MARQUEURS NÉON (FIXED)
    ========================================================================== */
 
-/* --- CORRECTION CARTE --- */
-
-/* Ce filtre transforme les tuiles CLAIRES en carte SOMBRE high-tech */
+/* Rend le fond de carte sombre sans toucher aux marqueurs */
 .leaflet-tile-pane {
-    /* Suppression des doublons : on utilise un seul filtre équilibré */
-    filter: grayscale(100%) invert(100%) brightness(90%) contrast(90%);
+    filter: grayscale(100%) invert(100%) brightness(90%) contrast(90%) !important;
 }
 
-/* On s'assure que les marqueurs ne sont PAS inversés (sinon ils seraient orange au lieu de bleu) */
-.leaflet-marker-pane, .leaflet-shadow-pane, .leaflet-popup-pane {
-    filter: none !important;
+/* PROTECTION : Empêche la décoloration des marqueurs et des popups */
+.leaflet-marker-pane, 
+.leaflet-shadow-pane, 
+.leaflet-popup-pane,
+.leaflet-marker-icon,
+.neon-marker {
+    filter: none !important; /* Annule toute inversion héritée */
 }
 
 #experience-map {
@@ -533,41 +535,29 @@ footer {
     border-radius: 20px;
     border: 1.5px solid rgba(79, 172, 254, 0.4);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-    background-color: #050a0f; /* Fond bleu très sombre cohérent avec ton header */
+    background-color: #050a0f;
+    z-index: 1; /* S'assure que la map reste sous le menu */
 }
 
-/* Style du conteneur Leaflet qui accueille le divIcon */
-.custom-div-icon {
-    background: none !important;
-    border: none !important;
-    z-index: 1000 !important; /* Force les points au-dessus de la carte */
-    z-index: 1000 !important;
-}
-
-/* Le point central bleu */
+/* Le point central bleu - Ultra contrasté */
 .neon-marker {
-    width: 12px;
-    height: 12px;
-    width: 14px;
-    height: 14px;
-    background-color: #4facfe;
-    border: 2px solid #ffffff;
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #4facfe !important; /* Bleu vif */
+    border: 2px solid #ffffff !important;
     border-radius: 50%;
-    box-shadow: 0 0 10px #4facfe, 0 0 20px #00f2fe;
-    box-shadow: 0 0 15px #4facfe, 0 0 5px #ffffff;
+    box-shadow: 0 0 15px #4facfe, 0 0 5px #ffffff !important;
     display: block;
     position: relative;
 }
 
-/* L'animation de pulsation */
+/* Animation de pulsation */
 .neon-marker::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -578,18 +568,6 @@ footer {
 @keyframes pulsate {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
     100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
-}
-
-/* Ajustement des Popups pour aller avec le bleu */
-.leaflet-popup-content-wrapper {
-    background: #1a1a1a !important;
-    border-left: 4px solid #4facfe !important;
-    color: white !important;
-    border-radius: 10px !important;
-}
-
-.leaflet-popup-tip {
-    background: #1a1a1a !important;
 }
 /* ==========================================================================
    9. SECTION INFOGRAPHIE (STYLISÉE)
@@ -955,26 +933,7 @@ footer {
 
 .card:hover .card-logo img { filter: grayscale(0); }
 
-/* ==========================================================================
-   5. CARTE INTERACTIVE (LEAFLET & NÉON)
-   ========================================================================== */
-#experience-map {
-    height: 500px;
-    width: 80%;
-    margin: 40px auto;
-    border-radius: 25px;
-    border: 1px solid rgba(255,255,255,0.1);
-    filter: invert(100%) hue-rotate(180deg) brightness(0.95); /* Effet Dark Mode pour la carte */
-}
 
-.neon-marker {
-    width: 12px;
-    height: 12px;
-    background-color: #4facfe;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #4facfe, 0 0 30px #4facfe;
-    border: 2px solid white;
-}
 
 /* ==========================================================================
    6. MONITORING OCÉANO (GLASSMORPHISM)
