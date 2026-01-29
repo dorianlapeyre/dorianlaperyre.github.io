@@ -29,11 +29,11 @@ header.main-header {
     width: 100vw;
     min-height: 85vh;
     display: flex;
-    flex-direction: column;
+    /* On retire flex-direction: column; pour laisser le flux naturel */
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: #050a0f; /* Bleu très foncé profond */
+    background: #050a0f;
     overflow: hidden;
 }
 
