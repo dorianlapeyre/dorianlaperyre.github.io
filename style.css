@@ -101,57 +101,49 @@ header.main-header .highlight {
 /* ==========================================================================
    2.1 ENCADRÉS IMAGES HEADER (PORTRAIT & LOGO)
    ========================================================================== */
+/* --- Styles pour les petits encadrés photo --- */
 .header-profiles {
-    position: absolute;
-    top: 30px;
-    left: 30px;
+    position: absolute; /* Fixe les cadres par rapport au header */
+    top: 20px;
+    left: 20px;
     display: flex;
-    gap: 20px;
-    z-index: 1003; /* Doit être au-dessus des vagues et du nav si besoin */
+    gap: 15px;
+    z-index: 10; /* Pour passer devant les vagues */
 }
 
 .profile-box {
-    width: 85px;
-    height: 85px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 80px;  /* Taille fixe pour éviter l'effet "pleine page" */
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+    backdrop-filter: blur(10px); /* Effet de flou derrière le cadre */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Coins arrondis style moderne */
+    overflow: hidden; /* Pour que l'image ne dépasse pas du cadre arrondi */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
 }
 
 .profile-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garantit que ton portrait est bien cadré */
+    object-fit: cover; /* Recadre l'image automatiquement dans le carré */
 }
 
-/* Ajustement pour le logo du master (souvent sur fond transparent) */
+/* Style spécifique pour le logo Master (souvent sur fond blanc/transparent) */
 .master-logo img {
-    object-fit: contain;
-    padding: 10px; /* Évite que le logo ne touche les bords de l'encadré */
+    object-fit: contain; /* Évite de couper le logo */
+    padding: 8px; /* Un peu d'air autour du logo */
 }
 
 .profile-box:hover {
-    transform: scale(1.1) rotate(2deg);
-    border-color: #60a5fa;
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+    transform: translateY(-5px) scale(1.05); /* Petit effet d'animation au survol */
 }
 
-/* Optimisation pour mobile (pour éviter de masquer le nom sur petit écran) */
+/* Ajustement pour mobile pour ne pas masquer le nom */
 @media (max-width: 768px) {
-    .header-profiles {
-        top: 15px;
-        left: 15px;
-        gap: 12px;
-    }
     .profile-box {
         width: 60px;
         height: 60px;
-        border-radius: 12px;
     }
 }
 
