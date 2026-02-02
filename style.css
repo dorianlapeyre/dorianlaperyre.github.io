@@ -113,8 +113,8 @@ header.main-header .highlight {
 
 .profile-box {
     /* TAILLE AGRANDIE ICI */
-    width: 280px !important;  
-    height: 280px !important; 
+    width: 240px !important;  
+    height: 240px !important; 
     
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
