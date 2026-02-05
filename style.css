@@ -1091,12 +1091,12 @@ footer {
     margin: 0 auto;
 }
 
-/* Fix spécifique pour mobile pour éviter le scroll infini */
+/* --- À CORRIGER --- */
 @media (max-width: 768px) {
     .pdf-container {
         aspect-ratio: auto;
         height: 600px;
     }
 }
-    margin-right: 8px;
+margin-right: 8px; /* <--- Erreur : Propriété sans sélecteur */
 }
