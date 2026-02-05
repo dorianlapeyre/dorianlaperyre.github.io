@@ -1001,7 +1001,7 @@ footer {
 
 
 /* ==========================================================================
-   12. Nouvel Agencement PCSI Optimisé 
+   12. NOUVEL AGENCEMENT PCSI (VERSION CORRIGÉE)
    ========================================================================== */
 
 .subjects-container {
@@ -1014,25 +1014,25 @@ footer {
 .subject-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px;
     display: grid;
-    grid-template-columns: 1fr 250px;
-    align-items: center;
+    /* On définit deux colonnes : le texte à gauche, le média à droite */
+    grid-template-columns: 1fr 300px; 
+    align-items: start;
     gap: 30px;
     transition: 0.3s ease;
 }
 
 .subject-info h3 {
-    color: #60a5fa !important;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    grid-column: 1 / -1; /* S'assure que le titre prend toute la largeur */
+    color: #60a5fa;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
 }
 
-/* Correction majeure : On gère les sous-titres proprement */
 .subject-subtitle {
     color: var(--accent);
     font-size: 0.85rem;
@@ -1041,34 +1041,24 @@ footer {
     letter-spacing: 1.2px;
     margin: 25px 0 15px 0;
     display: block;
-    width: 100%;
     border-bottom: 1px solid rgba(79, 70, 229, 0.2);
     padding-bottom: 5px;
 }
 
 .subject-info ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px 30px;
     list-style: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px 25px;
-    margin-bottom: 20px;
-}
-
-/* Gestion des sous-listes (Maths) */
-.subject-info ul ul {
-    display: block; 
-    grid-column: 1 / -1;
-    margin: 5px 0 10px 20px;
-    border-left: 1px dashed var(--text-dim);
 }
 
 .subject-info li {
-    color: var(--text-dim);
+    color: #e0e0e0;
     position: relative;
     padding-left: 25px;
-    line-height: 1.5;
     font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 .subject-info li::before {
@@ -1078,25 +1068,43 @@ footer {
     color: var(--accent);
 }
 
+/* Sous-listes (ex: détails des chapitres) */
+.subject-info ul ul {
+    display: block; 
+    grid-column: 1 / -1;
+    margin: 5px 0 10px 20px;
+    border-left: 1px dashed rgba(160, 160, 160, 0.4);
+}
+
+/* Conteneur PDF à droite */
 .pdf-container {
-    position: relative;
     width: 100%;
     aspect-ratio: 1 / 1.41; 
-    max-height: 90vh;
     background: #1a1a1a;
     border-radius: 12px;
     border: 1px solid rgba(79, 70, 229, 0.4);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin: 0 auto;
 }
 
-/* --- À CORRIGER --- */
-@media (max-width: 768px) {
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .subject-card {
+        grid-template-columns: 1fr; /* On empile sur tablette/mobile */
+    }
+    
     .pdf-container {
-        aspect-ratio: auto;
-        height: 600px;
+        max-width: 400px;
+        margin: 0 auto;
     }
 }
-margin-right: 8px; /* <--- Erreur : Propriété sans sélecteur */
+
+@media (max-width: 768px) {
+    .subject-info ul {
+        grid-template-columns: 1fr; /* Une seule colonne de texte sur mobile */
+    }
+    
+    .pdf-container {
+        height: 500px;
+    }
 }
