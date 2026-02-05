@@ -1073,25 +1073,47 @@ footer {
     margin-bottom: 20px;
 }
 
-/* --- LISTES ET PUCES --- */
+/* --- AMÉLIORATION DE LA GRILLE POUR LES TEXTES LONGS --- */
 .subject-info ul {
+    display: grid;
+    /* auto-fill permet de créer autant de colonnes que possible, 
+       mais minmax(320px, 1fr) garantit que chaque colonne a assez d'espace */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px 40px; /* Augmentation de l'espace entre les blocs de texte */
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px 30px;
+    align-items: start; /* Aligne le texte en haut pour éviter les décalages si une puce est plus longue */
 }
 
-/* --- PUCES ET TEXTE DE NIVEAU 1 (PRIMAIRE) --- */
+/* --- OPTIMISATION DU TEXTE DANS LES PUCES --- */
 .subject-info li {
-    color: #ffffff; /* Texte principal bien blanc pour ressortir */
+    color: #ffffff;
     position: relative;
-    padding-left: 20px;
-    line-height: 1.5;
+    padding-left: 25px;
+    line-height: 1.6; /* Interligne légèrement augmenté pour la lisibilité */
     font-size: 0.95rem;
-    font-weight: 500;
+    word-break: break-word; /* Empêche les mots très longs de déborder */
+    overflow-wrap: break-word;
 }
+
+/* --- PUCES SECONDAIRES (CHIMIE / MATHS) --- */
+.subject-info ul ul {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1; /* Permet à la sous-liste de prendre toute la largeur de sa colonne parente */
+    margin: 12px 0 5px 20px;
+    gap: 12px;
+}
+
+.subject-info ul ul li {
+    color: #a0a0a0 !important;
+    font-size: 0.9rem;
+    padding-left: 20px;
+    /* On s'assure que le texte long ne chevauche pas la puce suivante */
+    padding-bottom: 5px; 
+}
+
 
 .subject-info li::before {
     content: "";
@@ -1104,13 +1126,6 @@ footer {
     border-radius: 50%;
 }
 
-/* --- PUCES ET TEXTE DE NIVEAU 2 (SECONDAIRE) --- */
-.subject-info ul ul li {
-    color: #a0a0a0 !important; /* Gris plus sombre pour le contraste */
-    font-size: 0.85rem; /* Légèrement plus petit pour la hiérarchie */
-    font-weight: 400;   /* Moins gras que le niveau 1 */
-    padding-left: 20px;
-}
 
 /* Le rond creux pour le niveau 2 (rappel) */
 .subject-info ul ul li::before {
