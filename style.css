@@ -1001,13 +1001,13 @@ footer {
 
 
 /* ==========================================================================
-   12. NOUVEL AGENCEMENT PCSI (VERSION CORRIGÉE)
+   12. AGENCEMENT PCSI ÉPURÉ (BOUTONS & PUCES MODERNES)
    ========================================================================== */
 
 .subjects-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 50px;
     margin-top: 30px;
 }
 
@@ -1015,96 +1015,100 @@ footer {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 45px;
+    transition: transform 0.3s ease;
+}
+
+/* En-tête de la carte : Titre + Bouton */
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.subject-header h3 {
+    color: #ffffff; /* Plus de néon, juste blanc pur */
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 800;
+}
+
+/* Style du Bouton Télécharger */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: white !important;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 40px;
-    display: grid;
-    /* On définit deux colonnes : le texte à gauche, le média à droite */
-    grid-template-columns: 1fr 300px; 
-    align-items: start;
-    gap: 30px;
-    transition: 0.3s ease;
 }
 
-.subject-info h3 {
-    color: #60a5fa;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+    filter: brightness(1.1);
 }
 
-.subject-subtitle {
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin: 25px 0 15px 0;
-    display: block;
-    border-bottom: 1px solid rgba(79, 70, 229, 0.2);
-    padding-bottom: 5px;
-}
-
+/* Grille de contenu */
 .subject-info ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 12px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px 40px;
     list-style: none;
     padding: 0;
 }
 
 .subject-info li {
-    color: #e0e0e0;
+    color: #d1d1d1;
     position: relative;
-    padding-left: 25px;
+    padding-left: 20px;
     font-size: 0.95rem;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
+/* Remplacement des flèches par des puces discrètes */
 .subject-info li::before {
-    content: "→";
+    content: "";
     position: absolute;
     left: 0;
-    color: var(--accent);
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
 }
 
-/* Sous-listes (ex: détails des chapitres) */
+/* Sous-listes */
 .subject-info ul ul {
-    display: block; 
     grid-column: 1 / -1;
-    margin: 5px 0 10px 20px;
-    border-left: 1px dashed rgba(160, 160, 160, 0.4);
+    margin: 10px 0 10px 25px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Conteneur PDF à droite */
-.pdf-container {
-    width: 100%;
-    aspect-ratio: 1 / 1.41; 
-    background: #1a1a1a;
-    border-radius: 12px;
-    border: 1px solid rgba(79, 70, 229, 0.4);
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.subject-subtitle {
+    color: #60a5fa;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 30px 0 15px 0;
+    display: block;
+    opacity: 0.8;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-    .subject-card {
-        grid-template-columns: 1fr; /* On empile sur tablette/mobile */
-    }
-    
-    .pdf-container {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-    .subject-info ul {
-        grid-template-columns: 1fr; /* Une seule colonne de texte sur mobile */
-    }
-    
-    .pdf-container {
-        height: 500px;
-    }
+    .subject-header { flex-direction: column; align-items: flex-start; }
+    .subject-card { padding: 25px; }
 }
