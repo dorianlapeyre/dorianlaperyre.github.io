@@ -1085,7 +1085,15 @@ footer {
     transition: 0.3s;
     width: 100%; /* Prend toute la place de sa colonne */
 }
-
+.subject-subtitle {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
 /* Responsive : On empile tout sur mobile */
 @media (max-width: 900px) {
     .subject-card {
