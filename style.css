@@ -1007,125 +1007,96 @@ footer {
 .subjects-container {
     display: flex;
     flex-direction: column;
-    gap: 40px; /* Grand espace entre chaque matière */
+    gap: 40px;
     margin-top: 30px;
 }
 
 .subject-card {
     background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 40px; /* Plus de padding pour aérer */
+    padding: 40px;
     display: grid;
-    grid-template-columns: 1fr 250px; /* Le texte à gauche, le bouton à droite */
+    grid-template-columns: 1fr 250px;
     align-items: center;
     gap: 30px;
     transition: 0.3s ease;
 }
 
-.subject-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--accent);
-}
-
 .subject-info h3 {
     color: #60a5fa !important;
     font-size: 1.8rem;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    margin-bottom: 25px;
+    grid-column: 1 / -1; /* S'assure que le titre prend toute la largeur */
+}
+
+/* Correction majeure : On gère les sous-titres proprement */
+.subject-subtitle {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 25px 0 15px 0;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(79, 70, 229, 0.2);
+    padding-bottom: 5px;
 }
 
 .subject-info ul {
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Les puces se mettent sur 2 colonnes si possible */
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px 25px;
+    margin-bottom: 20px;
+}
+
+/* Gestion des sous-listes (Maths) */
+.subject-info ul ul {
+    display: block; 
+    grid-column: 1 / -1;
+    margin: 5px 0 10px 20px;
+    border-left: 1px dashed var(--text-dim);
 }
 
 .subject-info li {
     color: var(--text-dim);
     position: relative;
     padding-left: 25px;
-    line-height: 1.6;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
-/* Custom bullet points */
 .subject-info li::before {
     content: "→";
     position: absolute;
     left: 0;
     color: var(--accent);
-    font-weight: bold;
 }
 
-.subject-info strong {
-    color: #fff;
-    display: block; /* Met le titre de la puce sur sa propre ligne pour aérer */
-    margin-bottom: 5px;
-}
-/* Pour les listes imbriquées (ex: sous-chapitres de maths) */
-.subject-info ul ul {
-    grid-column: 1 / -1; /* Prend toute la largeur */
-    display: block;      /* On repasse en liste simple */
-    margin-left: 20px;
-    margin-top: 5px;
-    border-left: 1px dashed var(--text-dim);
-}
-
-.subject-info ul ul li {
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
-
-.subject-info ul ul li::before {
-    content: "○"; /* Puce différente pour le second niveau */
-    font-size: 0.7rem;
-}
-/* Bouton de téléchargement plus large */
-.download-area {
-    text-align: right;
-}
-
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 25px;
-    background: var(--accent);
-    color: white;
-    text-decoration: none;
+.pdf-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.41; 
+    max-height: 90vh;
+    background: #1a1a1a;
     border-radius: 12px;
-    font-weight: 600;
-    transition: 0.3s;
-    width: 100%; /* Prend toute la place de sa colonne */
-}
-/* Force les sous-titres à rompre la grille des colonnes pour rester lisibles */
-.subject-subtitle {
-    grid-column: 1 / -1; 
-    border-bottom: 1px solid rgba(79, 70, 229, 0.2);
-    padding-bottom: 5px;
-    margin-top: 20px;
-}
-/* Responsive : On empile tout sur mobile */
-@media (max-width: 900px) {
-    .subject-card {
-        grid-template-columns: 1fr;
-        padding: 25px;
-    }
-    
-    .download-area {
-        text-align: left;
-    }
-
-    .subject-info h3 {
-        font-size: 1.5rem;
-    }
+    border: 1px solid rgba(79, 70, 229, 0.4);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
 }
 
-.download-btn::before {
-    content: "📥"; /* Petit emoji icône */
+/* Fix spécifique pour mobile pour éviter le scroll infini */
+@media (max-width: 768px) {
+    .pdf-container {
+        aspect-ratio: auto;
+        height: 600px;
+    }
+}
     margin-right: 8px;
 }
