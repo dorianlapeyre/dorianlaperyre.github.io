@@ -1083,13 +1083,14 @@ footer {
     gap: 15px 30px;
 }
 
-/* Puce de niveau 1 : Rond plein */
+/* --- PUCES ET TEXTE DE NIVEAU 1 (PRIMAIRE) --- */
 .subject-info li {
-    color: #e0e0e0;
+    color: #ffffff; /* Texte principal bien blanc pour ressortir */
     position: relative;
     padding-left: 20px;
     line-height: 1.5;
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .subject-info li::before {
@@ -1103,20 +1104,25 @@ footer {
     border-radius: 50%;
 }
 
-/* Puce de niveau 2 : Rond creux (Simple & Propre) */
-.subject-info ul ul {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1 / -1;
-    margin: 8px 0 5px 25px;
-    gap: 8px;
+/* --- PUCES ET TEXTE DE NIVEAU 2 (SECONDAIRE) --- */
+.subject-info ul ul li {
+    color: #a0a0a0 !important; /* Gris plus sombre pour le contraste */
+    font-size: 0.85rem; /* Légèrement plus petit pour la hiérarchie */
+    font-weight: 400;   /* Moins gras que le niveau 1 */
+    padding-left: 20px;
 }
 
+/* Le rond creux pour le niveau 2 (rappel) */
 .subject-info ul ul li::before {
-    background: transparent;
-    border: 1.5px solid #60a5fa;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
     width: 5px;
     height: 5px;
+    background: transparent;
+    border: 1.5px solid #60a5fa; /* Couleur de la puce secondaire */
+    border-radius: 50%;
 }
 
 /* Responsive */
