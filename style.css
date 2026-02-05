@@ -998,3 +998,63 @@ footer {
 /* Centrage global des titres */
 .center-text { text-align: center; margin-top: 60px; font-size: 2rem; color: #fff; }
 .mini-grid strong { color: #fff; }
+
+
+/* --- Organisation de la page PCSI --- */
+
+/* Conteneur pour séparer les matières dans la content-box */
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.subject-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s ease;
+}
+
+.subject-block:hover {
+    border-color: var(--accent);
+    background: rgba(79, 70, 229, 0.05);
+}
+
+.subject-block h3 {
+    color: #60a5fa !important; /* Bleu clair pour les titres de matières */
+    border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Style des boutons de téléchargement */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.download-btn::before {
+    content: "📥"; /* Petit emoji icône */
+    margin-right: 8px;
+}
