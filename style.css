@@ -1066,7 +1066,24 @@ footer {
     display: block; /* Met le titre de la puce sur sa propre ligne pour aérer */
     margin-bottom: 5px;
 }
+/* Pour les listes imbriquées (ex: sous-chapitres de maths) */
+.subject-info ul ul {
+    grid-column: 1 / -1; /* Prend toute la largeur */
+    display: block;      /* On repasse en liste simple */
+    margin-left: 20px;
+    margin-top: 5px;
+    border-left: 1px dashed var(--text-dim);
+}
 
+.subject-info ul ul li {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.subject-info ul ul li::before {
+    content: "○"; /* Puce différente pour le second niveau */
+    font-size: 0.7rem;
+}
 /* Bouton de téléchargement plus large */
 .download-area {
     text-align: right;
@@ -1085,14 +1102,12 @@ footer {
     transition: 0.3s;
     width: 100%; /* Prend toute la place de sa colonne */
 }
+/* Force les sous-titres à rompre la grille des colonnes pour rester lisibles */
 .subject-subtitle {
-    color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    margin-top: -10px;
+    grid-column: 1 / -1; 
+    border-bottom: 1px solid rgba(79, 70, 229, 0.2);
+    padding-bottom: 5px;
+    margin-top: 20px;
 }
 /* Responsive : On empile tout sur mobile */
 @media (max-width: 900px) {
