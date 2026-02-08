@@ -1215,3 +1215,26 @@ footer {
     justify-content: center; /* Aligne les boutons au centre par rapport au point de la timeline */
     gap: 10px;
 }
+
+/* Container qui contient tous les wrappers de matières */
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espace régulier entre chaque bloc de cours */
+    margin-bottom: 30px;
+}
+
+/* Le wrapper qui contient un bouton + sa carte */
+.subject-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ton bouton doit prendre toute la largeur ou être centré */
+.toggle-subject-btn {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    /* ... tes autres styles ... */
+}
