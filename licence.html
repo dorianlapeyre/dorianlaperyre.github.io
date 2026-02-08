@@ -34,7 +34,12 @@
                 <div class="timeline-item">
                     <span class="timeline-date">2021 - 2022 | Licence 1 S1</span>                    
                     <div class="subjects-container">
-                        <div class="subject-card">
+                        <button class="toggle-subject-btn" onclick="toggleSection('optique-section')">
+                        Optique géométrique
+                        </button>
+
+                        <div class="subject-card" id="optique-section">
+                        <button class="close-section-btn" onclick="toggleSection('optique-section')" title="Fermer">×</button>
                             <div class="subject-header">
                                 <h3>Optique géométrique</h3>
                                 <a href="pdf/programme-pcsi_physique.pdf" class="download-btn" target="_blank">
