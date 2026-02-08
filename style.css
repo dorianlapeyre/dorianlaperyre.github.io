@@ -1126,6 +1126,58 @@ footer {
     border-radius: 50%;
 }
 
+/* --- Styles pour le système de déroulement --- */
+
+/* On cache les cartes par défaut */
+.subject-card {
+    display: none; 
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Style des boutons de matières (Design Premium) */
+.toggle-subject-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.toggle-subject-btn:hover {
+    background: var(--accent);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Bouton Fermer (La croix) */
+.close-section-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.close-section-btn:hover {
+    background: #ef4444; /* Rouge au survol pour la fermeture */
+}
 
 /* Le rond creux pour le niveau 2 (rappel) */
 .subject-info ul ul li::before {
