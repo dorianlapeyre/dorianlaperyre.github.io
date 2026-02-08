@@ -1135,19 +1135,28 @@ footer {
     margin-top: 20px;
 }
 
-/* Style des boutons de matières (Design Premium) */
 .toggle-subject-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(79, 70, 229, 0.3);
     color: white;
-    padding: 15px 30px;
+    
+    /* TAILLE ET AJUSTEMENT */
+    width: fit-content;       /* Le bouton s'adapte à la longueur du texte */
+    padding: 10px 20px;       /* Un peu moins imposant que 15px 30px */
+    min-width: 140px;         /* Pour garder une certaine présence visuelle */
+    
     border-radius: 12px;
-    font-size: 1.1rem;
+    font-size: 1rem;          /* Légère réduction pour éviter l'effet "bloc" */
     font-weight: 600;
     cursor: pointer;
+    
+    /* ESPACEMENT */
+    margin: 5px;              /* Gère l'espace tout autour plus proprement */
+    
+    /* ANIMATION ET AFFICHAGE */
+    display: inline-block;    /* Permet aux boutons de se mettre côte à côte */
     transition: all 0.3s ease;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    -webkit-appearance: none; /* Compatibilité mobile (Safari) */
 }
 
 .toggle-subject-btn:hover {
