@@ -1655,6 +1655,22 @@
     <footer>
         <p>© 2026 — Dorian Lapeyre</p>
     </footer>
-
+<script>
+function toggleSection(id) {
+    const section = document.getElementById(id);
+    
+    // Si la section est déjà visible, on la cache
+    if (section.style.display === "block") {
+        section.style.display = "none";
+    } else {
+        // Optionnel : cache toutes les autres sections avant d'ouvrir la nouvelle
+        document.querySelectorAll('.subject-card').forEach(s => s.style.display = 'none');
+        
+        section.style.display = "block";
+        // Petit scroll automatique vers la section
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+</script>
 </body>
 </html>
