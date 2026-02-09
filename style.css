@@ -1246,17 +1246,29 @@ footer {
     transform: translateY(-2px);
 }
 
-/* 3. La Carte : Large pour une lecture confortable */
 .subject-card {
-    display: none;         /* Cachée par défaut */
-    width: 100%;           /* Prend toute la largeur disponible de la timeline */
-    max-width: 1000px;     /* Mais s'arrête à 1000px pour ne pas être trop étirée */
+    display: none;        /* Gardé pour ne pas occuper d'espace quand fermé */
+    width: 100%;
+    max-width: 1000px;
     background: rgba(26, 26, 26, 0.95);
+    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 30px;
     margin-top: 15px;
     box-sizing: border-box;
-    clear: both;           /* Force la carte à s'afficher SOUS la ligne de boutons */
+    clear: both;
+
+    /* --- AJUSTEMENTS POUR L'ANIMATION --- */
+    opacity: 0;
+    transform: translateY(15px); /* Un peu plus prononcé pour la douceur */
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* LA CLASSE QUI DÉCLENCHE L'EFFET */
+.subject-card.active {
+    opacity: 1;
+    transform: translateY(0);
 }
