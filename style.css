@@ -1046,23 +1046,21 @@ footer {
 
 /* LA CARTE : Elle s'affiche en large sous les boutons */
 .subject-card {
-    display: none; /* Géré par JS */
+    display: none;
     width: 100% !important;
-    max-width: 1000px;
+    max-width: 1200px; /* Augmenté de 1000px à 1200px pour plus d'espace */
     background: rgba(26, 26, 26, 0.98) !important;
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     padding: 40px;
-    margin-top: 20px;
+    margin: 20px auto; /* Centre la carte si elle n'est pas à 100% de l'écran */
     box-sizing: border-box;
     clear: both;
-
-    /* Animation douce */
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative; /* Indispensable pour placer la croix correctement */
 }
 
 /* État quand la carte est ouverte */
@@ -1168,5 +1166,28 @@ footer {
 .close-section-btn:hover {
     background: #ef4444;
 }
+.download-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent); /* Utilise ton bleu/indigo habituel */
+    color: white !important;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+.download-link-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+}
+
+.download-link-btn i {
+    font-size: 1rem;
+}
 
