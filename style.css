@@ -1001,240 +1001,37 @@ footer {
 
 
 /* ==========================================================================
-   12. AGENCEMENT PCSI : STRUCTURE PAR BLOCS THÉMATIQUES
+   12. AGENCEMENT PCSI : VERSION NETTOYÉE ET CORRIGÉE
    ========================================================================== */
 
+/* LE CONTENEUR : Il aligne les boutons en ligne au début de la timeline */
 .subjects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 30px;
-}
-
-.subject-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 40px;
-}
-
-/* En-tête : Titre et Bouton alignés */
-.subject-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 20px;
-}
-
-.subject-header h3 {
-    font-size: 2.2rem;
-    color: #fff;
-    margin: 0;
-}
-
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: white !important;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    transition: 0.3s ease;
-}
-
-.download-btn:hover {
-    filter: brightness(1.2);
-    transform: translateY(-2px);
-}
-
-/* --- STRUCTURE DES BLOCS (Signaux, Mécanique...) --- */
-.subject-section {
-    background: rgba(0, 0, 0, 0.2); /* Fond subtil pour regrouper le bloc */
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 25px;
-}
-
-.subject-subtitle {
-    display: block;
-    color: #60a5fa; /* Bleu clair pour les titres de blocs */
-    font-size: 0.9rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 20px;
-}
-
-/* --- AMÉLIORATION DE LA GRILLE POUR LES TEXTES LONGS --- */
-.subject-info ul {
-    display: grid;
-    /* auto-fill permet de créer autant de colonnes que possible, 
-       mais minmax(320px, 1fr) garantit que chaque colonne a assez d'espace */
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 25px 40px; /* Augmentation de l'espace entre les blocs de texte */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: start; /* Aligne le texte en haut pour éviter les décalages si une puce est plus longue */
-}
-
-/* --- OPTIMISATION DU TEXTE DANS LES PUCES --- */
-.subject-info li {
-    color: #ffffff;
-    position: relative;
-    padding-left: 25px;
-    line-height: 1.6; /* Interligne légèrement augmenté pour la lisibilité */
-    font-size: 0.95rem;
-    word-break: break-word; /* Empêche les mots très longs de déborder */
-    overflow-wrap: break-word;
-}
-
-/* --- PUCES SECONDAIRES (CHIMIE / MATHS) --- */
-.subject-info ul ul {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1 / -1; /* Permet à la sous-liste de prendre toute la largeur de sa colonne parente */
-    margin: 12px 0 5px 20px;
-    gap: 12px;
-}
-
-.subject-info ul ul li {
-    color: #a0a0a0 !important;
-    font-size: 0.9rem;
-    padding-left: 20px;
-    /* On s'assure que le texte long ne chevauche pas la puce suivante */
-    padding-bottom: 5px; 
-}
-
-
-.subject-info li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 7px;
-    height: 7px;
-    background: var(--accent);
-    border-radius: 50%;
-}
-
-/* --- Styles pour le système de déroulement --- */
-
-
-/* Bouton Fermer (La croix) */
-.close-section-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s;
-}
-
-.close-section-btn:hover {
-    background: #ef4444; /* Rouge au survol pour la fermeture */
-}
-
-/* Le rond creux pour le niveau 2 (rappel) */
-.subject-info ul ul li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 7px;
-    width: 5px;
-    height: 5px;
-    background: transparent;
-    border: 1.5px solid #60a5fa; /* Couleur de la puce secondaire */
-    border-radius: 50%;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .subject-header { flex-direction: column; align-items: flex-start; gap: 15px; }
-    .subject-info ul { grid-template-columns: 1fr; }
-}
-
-/* Empêche la carte de décaler les éléments frères dans la timeline */
-.subject-card {
-    display: none;
-    width: 100%;
-    max-width: 800px; /* Ou la largeur de ton choix */
-    margin: 20px auto; /* Centre la carte */
-    position: relative;
-    clear: both; /* Force la carte à passer sous les boutons sans les pousser sur les côtés */
-}
-
-
-
-/* Container qui contient tous les wrappers de matières */
-.timeline-item {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espace régulier entre chaque bloc de cours */
-    margin-bottom: 30px;
-}
-
-/* Le wrapper qui contient un bouton + sa carte */
-.subject-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Ton bouton doit prendre toute la largeur ou être centré */
-.toggle-subject-btn {
-    width: 100%;
-    text-align: left;
-    padding: 15px;
-    /* ... tes autres styles ... */
-}
-
-
-
-/* 1. Le conteneur qui aligne les boutons proprement */
-.subjects-container {
-    display: flex;
-    flex-wrap: wrap;       /* Permet aux boutons de passer à la ligne */
-    gap: 15px;             /* Espace entre les boutons */
-    justify-content: flex-start; 
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important; 
+    gap: 15px;
+    justify-content: flex-start;
     margin: 20px 0;
 }
 
-/* 2. Les boutons : taille fixe et compacte */
+/* LES BOUTONS : Taille fixe pour l'uniformité */
 .toggle-subject-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(79, 70, 229, 0.3);
-    color: white;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(79, 70, 229, 0.3) !important;
+    color: white !important;
     
-    /* TAILLE FIXE ICI */
-    width: 300px;          /* Largeur uniforme pour tous les boutons */
-    height: 50px;          /* Hauteur uniforme */
-    padding: 5px 10px;
+    /* GESTION DE LA TAILLE */
+    width: 220px !important;   /* Largeur fixe */
+    height: 55px !important;    /* Hauteur fixe */
+    padding: 10px;
     
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Gestion du texte trop long dans le bouton */
+    /* Centrage parfait du texte */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1242,33 +1039,105 @@ footer {
 }
 
 .toggle-subject-btn:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
+    background: var(--accent) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
 }
 
+/* LA CARTE : Elle s'affiche en large sous les boutons */
 .subject-card {
-    display: none;        /* Gardé pour ne pas occuper d'espace quand fermé */
-    width: 100%;
+    display: none; /* Géré par JS */
+    width: 100% !important;
     max-width: 1000px;
-    background: rgba(26, 26, 26, 0.95);
-    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
+    background: rgba(26, 26, 26, 0.98) !important;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    margin-top: 15px;
+    border-radius: 24px;
+    padding: 40px;
+    margin-top: 20px;
     box-sizing: border-box;
     clear: both;
 
-    /* --- AJUSTEMENTS POUR L'ANIMATION --- */
+    /* Animation douce */
     opacity: 0;
-    transform: translateY(15px); /* Un peu plus prononcé pour la douceur */
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* LA CLASSE QUI DÉCLENCHE L'EFFET */
+/* État quand la carte est ouverte */
 .subject-card.active {
+    display: block !important;
     opacity: 1;
     transform: translateY(0);
 }
+
+/* --- DESIGN INTERNE DES CARTES (Contenu) --- */
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.subject-header h3 { font-size: 1.8rem; color: #fff; margin: 0; }
+
+.subject-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.subject-subtitle {
+    color: #60a5fa;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.subject-info ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px 30px;
+    list-style: none;
+    padding: 0;
+}
+
+.subject-info li {
+    color: #ffffff;
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.subject-info li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* La croix pour fermer */
+.close-section-btn {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-section-btn:hover { background: #ef4444; }
