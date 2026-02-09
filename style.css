@@ -1073,14 +1073,7 @@ footer {
 }
 
 /* --- DESIGN INTERNE DES CARTES (Contenu) --- */
-.subject-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 15px;
-}
+
 
 .subject-header h3 { font-size: 1.8rem; color: #fff; margin: 0; }
 
@@ -1124,20 +1117,56 @@ footer {
     background: var(--accent);
     border-radius: 50%;
 }
+/* En-tête de la carte : on crée de l'espace à droite pour la croix */
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+    padding-right: 50px; /* IMPORTANT : Crée une zone de sécurité pour la croix */
+    position: relative;
+}
 
-/* La croix pour fermer */
+/* Le bouton de téléchargement : on s'assure qu'il ne s'étale pas */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white !important;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: 0.3s ease;
+    white-space: nowrap; /* Empêche le texte du bouton de revenir à la ligne */
+    margin-left: 20px;   /* Espace entre le titre H3 et le bouton */
+}
+
+/* La croix de fermeture : positionnée de façon fixe par rapport à la CARTE */
 .close-section-btn {
-    position: absolute;
-    top: 20px; right: 20px;
+    position: absolute; /* Sort du flux flex pour ne pas pousser le bouton bleu */
+    top: 20px;
+    right: 20px;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     border: none;
-    width: 30px; height: 30px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10; /* Passe au-dessus de tout */
+    transition: 0.2s;
 }
 
-.close-section-btn:hover { background: #ef4444; }
+.close-section-btn:hover {
+    background: #ef4444;
+}
+
+
