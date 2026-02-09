@@ -1128,42 +1128,6 @@ footer {
 
 /* --- Styles pour le système de déroulement --- */
 
-/* On cache les cartes par défaut */
-.subject-card {
-    display: none; 
-    position: relative;
-    margin-top: 20px;
-}
-
-.toggle-subject-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(79, 70, 229, 0.3);
-    color: white;
-    
-    /* TAILLE ET AJUSTEMENT */
-    width: fit-content;       /* Le bouton s'adapte à la longueur du texte */
-    padding: 10px 20px;       /* Un peu moins imposant que 15px 30px */
-    min-width: 140px;         /* Pour garder une certaine présence visuelle */
-    
-    border-radius: 12px;
-    font-size: 1rem;          /* Légère réduction pour éviter l'effet "bloc" */
-    font-weight: 600;
-    cursor: pointer;
-    
-    /* ESPACEMENT */
-    margin: 5px;              /* Gère l'espace tout autour plus proprement */
-    
-    /* ANIMATION ET AFFICHAGE */
-    display: inline-block;    /* Permet aux boutons de se mettre côte à côte */
-    transition: all 0.3s ease;
-    -webkit-appearance: none; /* Compatibilité mobile (Safari) */
-}
-
-.toggle-subject-btn:hover {
-    background: var(--accent);
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
-    transform: translateY(-2px);
-}
 
 /* Bouton Fermer (La croix) */
 .close-section-btn {
@@ -1217,13 +1181,7 @@ footer {
     clear: both; /* Force la carte à passer sous les boutons sans les pousser sur les côtés */
 }
 
-/* Assure-toi que le container des boutons ne crée pas de décalage */
-.subjects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Aligne les boutons au centre par rapport au point de la timeline */
-    gap: 10px;
-}
+
 
 /* Container qui contient tous les wrappers de matières */
 .timeline-item {
@@ -1246,4 +1204,59 @@ footer {
     text-align: left;
     padding: 15px;
     /* ... tes autres styles ... */
+}
+
+
+
+/* 1. Le conteneur qui aligne les boutons proprement */
+.subjects-container {
+    display: flex;
+    flex-wrap: wrap;       /* Permet aux boutons de passer à la ligne */
+    gap: 15px;             /* Espace entre les boutons */
+    justify-content: flex-start; 
+    margin: 20px 0;
+}
+
+/* 2. Les boutons : taille fixe et compacte */
+.toggle-subject-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    color: white;
+    
+    /* TAILLE FIXE ICI */
+    width: 200px;          /* Largeur uniforme pour tous les boutons */
+    height: 50px;          /* Hauteur uniforme */
+    padding: 5px 10px;
+    
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* Gestion du texte trop long dans le bouton */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.toggle-subject-btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* 3. La Carte : Large pour une lecture confortable */
+.subject-card {
+    display: none;         /* Cachée par défaut */
+    width: 100%;           /* Prend toute la largeur disponible de la timeline */
+    max-width: 1000px;     /* Mais s'arrête à 1000px pour ne pas être trop étirée */
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    clear: both;           /* Force la carte à s'afficher SOUS la ligne de boutons */
 }
