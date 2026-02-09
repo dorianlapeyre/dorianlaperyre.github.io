@@ -1006,12 +1006,12 @@ footer {
 
 /* LE CONTENEUR : Il aligne les boutons en ligne au début de la timeline */
 .subjects-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    flex-direction: row !important; 
-    gap: 15px;
-    justify-content: flex-start;
-    margin: 20px 0;
+    display: grid !important;
+    /* Crée autant de colonnes que possible de taille égale (minimum 250px) */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; /* Espacement fixe et propre entre tous les boutons */
+    margin: 30px 0;
+    width: 100%;
 }
 
 /* LES BOUTONS : Taille fixe pour l'uniformité */
@@ -1020,10 +1020,10 @@ footer {
     border: 1px solid rgba(79, 70, 229, 0.3) !important;
     color: white !important;
     
-    /* GESTION DE LA TAILLE */
-    width: 220px !important;   /* Largeur fixe */
-    height: 55px !important;    /* Hauteur fixe */
-    padding: 10px;
+    /* On retire les largeurs fixes pour laisser la grille gérer l'homogénéité */
+    width: 100% !important; 
+    min-height: 65px; /* Hauteur minimale pour accommoder les textes longs */
+    padding: 12px 20px;
     
     border-radius: 12px;
     font-size: 0.95rem;
@@ -1031,11 +1031,12 @@ footer {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Centrage parfait du texte */
+    /* Centrage du texte sur plusieurs lignes si nécessaire */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    line-height: 1.3;
 }
 
 .toggle-subject-btn:hover {
@@ -1056,6 +1057,7 @@ footer {
     padding: 40px;
     margin: 20px auto; /* Centre la carte si elle n'est pas à 100% de l'écran */
     box-sizing: border-box;
+    position: relative; /* Pour positionner la croix par rapport à la carte */
     clear: both;
     opacity: 0;
     transform: translateY(15px);
@@ -1115,18 +1117,17 @@ footer {
     background: var(--accent);
     border-radius: 50%;
 }
-/* En-tête de la carte : on crée de l'espace à droite pour la croix */
+/* On sépare le titre et le bouton bleu de la zone de la croix */
 .subject-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    padding-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 15px;
-    padding-right: 50px; /* IMPORTANT : Crée une zone de sécurité pour la croix */
-    position: relative;
+    /* On laisse 60px de marge à droite pour que rien ne touche la croix */
+    padding-right: 60px; 
 }
-
 /* Le bouton de téléchargement : on s'assure qu'il ne s'étale pas */
 .download-btn {
     display: inline-flex;
@@ -1144,22 +1145,21 @@ footer {
     margin-left: 20px;   /* Espace entre le titre H3 et le bouton */
 }
 
-/* La croix de fermeture : positionnée de façon fixe par rapport à la CARTE */
 .close-section-btn {
-    position: absolute; /* Sort du flux flex pour ne pas pousser le bouton bleu */
-    top: 20px;
-    right: 20px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
+    color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10; /* Passe au-dessus de tout */
     transition: 0.2s;
 }
 
