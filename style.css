@@ -1224,7 +1224,7 @@ footer {
     color: white;
     
     /* TAILLE FIXE ICI */
-    width: 200px;          /* Largeur uniforme pour tous les boutons */
+    width: 300px;          /* Largeur uniforme pour tous les boutons */
     height: 50px;          /* Hauteur uniforme */
     padding: 5px 10px;
     
