@@ -1024,6 +1024,7 @@ footer {
     width: 100% !important; 
     min-height: 65px; /* Hauteur minimale pour accommoder les textes longs */
     padding: 12px 20px;
+    height: auto !important;
     
     border-radius: 12px;
     font-size: 0.95rem;
