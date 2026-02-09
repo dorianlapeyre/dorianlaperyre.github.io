@@ -1920,17 +1920,24 @@
 <script>
 function toggleSection(id) {
     const section = document.getElementById(id);
+    const isVisible = section.classList.contains('active');
     
-    // Si la section est déjà visible, on la cache
-    if (section.style.display === "block") {
-        section.style.display = "none";
-    } else {
-        // Optionnel : cache toutes les autres sections avant d'ouvrir la nouvelle
-        document.querySelectorAll('.subject-card').forEach(s => s.style.display = 'none');
-        
+    // 1. On cache toutes les autres sections proprement
+    document.querySelectorAll('.subject-card').forEach(s => {
+        s.classList.remove('active');
+        // On attend la fin de l'animation pour mettre en display none
+        setTimeout(() => { 
+            if(!s.classList.contains('active')) s.style.display = 'none'; 
+        }, 400); 
+    });
+
+    // 2. Si la section n'était pas visible, on l'affiche
+    if (!isVisible) {
         section.style.display = "block";
-        // Petit scroll automatique vers la section
-        section.scrollIntoView({ behavior: 'smooth' });
+        // On utilise un micro-délai pour que l'animation CSS se déclenche
+        setTimeout(() => {
+            section.classList.add('active');
+        }, 10);
     }
 }
 </script>
