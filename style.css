@@ -1007,14 +1007,11 @@ footer {
 /* LE CONTENEUR : Il aligne les boutons en ligne au début de la timeline */
 .subjects-container {
     display: grid !important;
-    /* On définit des colonnes qui s'adaptent, mais partagent la même largeur sur une ligne */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; 
-    /* Gap identique pour l'espacement horizontal et vertical */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; 
     gap: 20px !important; 
     margin: 30px 0 !important;
     width: 100% !important;
-    /* Assure que la grille ne s'étire pas bizarrement si peu d'éléments */
-    align-items: stretch !important; 
+    align-items: start !important; /* Changé stretch par start */
 }
 
 /* LES BOUTONS : Taille fixe pour l'uniformité */
