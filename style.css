@@ -1028,6 +1028,7 @@ footer {
     min-height: 70px !important; 
     height: 100% !important; 
     padding: 15px 20px !important;
+    margin-bottom: 15px;
     
     border-radius: 12px;
     font-size: 0.95rem;
