@@ -1004,26 +1004,35 @@ footer {
    12. AGENCEMENT PCSI : VERSION NETTOYÉE ET CORRIGÉE
    ========================================================================== */
 
-/* LE CONTENEUR : Organise les boutons en liste verticale avec espacement régulier */
+/* ==========================================================================
+   12. AGENCEMENT PCSI : VERSION HARMONISÉE
+   ========================================================================== */
+
 .subjects-container {
     display: flex !important;
-    flex-direction: column !important; /* Force l'alignement vertical */
-    gap: 20px !important;              /* Espacement régulier entre boutons */
+    flex-direction: column !important;
+    gap: 20px !important;
     margin: 30px 0 !important;
     width: 100% !important;
-    align-items: flex-start !important; /* Aligne au début de la timeline */
+    /* On utilise stretch pour que tous les boutons aient la même largeur par défaut */
+    align-items: stretch !important; 
 }
 
-/* LES BOUTONS : Largeur fixe et design uniforme */
 .toggle-subject-btn {
+    /* Sécurité pour forcer le même comportement sur tous les boutons */
+    box-sizing: border-box !important;
+    flex: none !important; 
+    
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(79, 70, 229, 0.3) !important;
     color: white !important;
     
-    /* Largeur fixe : un peu plus petit que l'espace disponible */
+    /* Largeur fixe par rapport au parent */
     width: 90% !important; 
-    max-width: 600px; /* Sécurité pour les très grands écrans */
+    max-width: 600px;
+    margin-left: 0 !important;
     
+    /* On harmonise la hauteur : min-height au lieu de height */
     min-height: 60px !important;  
     padding: 15px 25px !important;
     
@@ -1031,14 +1040,12 @@ footer {
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    line-height: 1.4;
-    margin-bottom: 0 !important; /* Le gap du container gère l'espace */
 }
 
 .toggle-subject-btn:hover {
