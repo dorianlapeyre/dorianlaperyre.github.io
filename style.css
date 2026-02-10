@@ -1004,28 +1004,28 @@ footer {
    12. AGENCEMENT PCSI : VERSION NETTOYÉE ET CORRIGÉE
    ========================================================================== */
 
-/* LE CONTENEUR : Il aligne les boutons en ligne au début de la timeline */
+/* LE CONTENEUR : Organise les boutons en liste verticale avec espacement régulier */
 .subjects-container {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; 
-    gap: 20px !important; 
+    display: flex !important;
+    flex-direction: column !important; /* Force l'alignement vertical */
+    gap: 20px !important;              /* Espacement régulier entre boutons */
     margin: 30px 0 !important;
     width: 100% !important;
-    align-items: start !important; /* Changé stretch par start */
+    align-items: flex-start !important; /* Aligne au début de la timeline */
 }
 
-/* LES BOUTONS : Taille fixe pour l'uniformité */
+/* LES BOUTONS : Largeur fixe et design uniforme */
 .toggle-subject-btn {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(79, 70, 229, 0.3) !important;
     color: white !important;
     
-    width: 100% !important; 
-    /* On laisse le bouton respirer sans hauteur fixe bloquante */
-    min-height: 70px !important; 
-    height: 100% !important; 
-    padding: 15px 20px !important;
-    margin-bottom: 15px;
+    /* Largeur fixe : un peu plus petit que l'espace disponible */
+    width: 90% !important; 
+    max-width: 600px; /* Sécurité pour les très grands écrans */
+    
+    min-height: 60px !important;  
+    padding: 15px 25px !important;
     
     border-radius: 12px;
     font-size: 0.95rem;
@@ -1037,43 +1037,33 @@ footer {
     align-items: center;
     justify-content: center;
     text-align: center;
-    line-height: 1.4; /* Augmenté pour éviter que les lignes se touchent */
+    line-height: 1.4;
+    margin-bottom: 0 !important; /* Le gap du container gère l'espace */
 }
 
 .toggle-subject-btn:hover {
     background: var(--accent) !important;
-    transform: translateY(-3px);
+    transform: translateX(10px); /* Petit décalage vers la droite au survol */
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
 }
 
-/* LA CARTE : Elle s'affiche en large sous les boutons */
+/* LA CARTE : S'affiche sous le bouton cliqué */
 .subject-card {
     display: none;
-    width: 100% !important;
+    width: 95% !important;
     max-width: 1200px;
     background: rgba(26, 26, 26, 0.98) !important;
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     padding: 40px;
-    margin: 30px auto; 
+    margin: 10px 0 30px 0; /* Petit espace sous le bouton */
     box-sizing: border-box;
-    clear: both;
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.4s ease, transform 0.4s ease;
-    position: relative; /* Une seule fois suffit */
-}
-
-/* On s'assure que le titre et le bouton bleu ne touchent JAMAIS la croix */
-.subject-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-right: 70px !important; /* Marge de sécurité augmentée pour la croix */
+    position: relative;
+    z-index: 50;
 }
 
 /* État quand la carte est ouverte */
@@ -1083,8 +1073,17 @@ footer {
     transform: translateY(0);
 }
 
-/* --- DESIGN INTERNE DES CARTES (Contenu) --- */
+/* --- DESIGN INTERNE DES CARTES --- */
 
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 70px !important; 
+}
 
 .subject-header h3 { font-size: 1.8rem; color: #fff; margin: 0; }
 
@@ -1129,7 +1128,6 @@ footer {
     border-radius: 50%;
 }
 
-/* Le bouton de téléchargement : on s'assure qu'il ne s'étale pas */
 .download-btn {
     display: inline-flex;
     align-items: center;
@@ -1142,8 +1140,8 @@ footer {
     font-weight: 600;
     font-size: 0.85rem;
     transition: 0.3s ease;
-    white-space: nowrap; /* Empêche le texte du bouton de revenir à la ligne */
-    margin-left: 20px;   /* Espace entre le titre H3 et le bouton */
+    white-space: nowrap;
+    margin-left: 20px;
 }
 
 .close-section-btn {
@@ -1167,11 +1165,12 @@ footer {
 .close-section-btn:hover {
     background: #ef4444;
 }
+
 .download-link-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--accent); /* Utilise ton bleu/indigo habituel */
+    background: var(--accent);
     color: white !important;
     text-decoration: none;
     padding: 10px 20px;
@@ -1187,8 +1186,3 @@ footer {
     filter: brightness(1.2);
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
 }
-
-.download-link-btn i {
-    font-size: 1rem;
-}
-
