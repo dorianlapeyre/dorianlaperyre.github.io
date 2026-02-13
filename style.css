@@ -1007,8 +1007,7 @@ footer {
 .subjects-container {
     display: flex !important;
     flex-direction: column !important;
-    /* On gère l'espace manuellement pour éviter les conflits avec les cartes cachées */
-    gap: 0 !important; 
+    gap: 0 !important; /* On désactive le gap pour éviter les bugs d'espacement */
     margin: 10px 0 !important;
     width: 100% !important;
     align-items: flex-start !important; 
