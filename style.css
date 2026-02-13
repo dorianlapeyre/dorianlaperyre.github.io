@@ -1001,43 +1001,33 @@ footer {
 
 
 /* ==========================================================================
-   12. AGENCEMENT PCSI : VERSION HARMONISÉE
-   ========================================================================== */
-/* ==========================================================================
-   12. AGENCEMENT PCSI : CORRECTION ALIGNEMENT BOUTONS
+   12. AGENCEMENT PCSI : VERSION FINALE HARMONISÉE
    ========================================================================== */
 
 .subjects-container {
     display: flex !important;
     flex-direction: column !important;
-    /* On réduit le gap si nécessaire, ou on le garde à 20px selon ton envie */
-    gap: 20px !important; 
-    margin: 20px 0 !important;
+    /* On gère l'espace manuellement pour éviter les conflits avec les cartes cachées */
+    gap: 0 !important; 
+    margin: 10px 0 !important;
     width: 100% !important;
-    align-items: stretch !important; 
-}
-
-/* Reset chirurgical pour éviter que le 1er bouton soit différent des autres */
-.subjects-container > *:first-child {
-    margin-top: 0 !important;
+    align-items: flex-start !important; 
 }
 
 .toggle-subject-btn {
     box-sizing: border-box !important;
     flex: none !important; 
-    
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(79, 70, 229, 0.3) !important;
     color: white !important;
     
-    /* Largeur fixe demandée */
+    /* Largeur fixe et espacement régulier */
     width: 90% !important; 
     max-width: 600px;
-    margin: 0 !important; /* On force 0 partout, le gap gère l'espace */
+    margin-bottom: 20px !important; /* L'espacement de 20px est ici ! */
     
     min-height: 60px !important;  
     padding: 15px 25px !important;
-    
     border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 600;
@@ -1050,31 +1040,44 @@ footer {
     text-align: center;
 }
 
-/* On s'assure que la carte (même cachée) ne crée pas de vide blanc */
-.subject-card {
-    display: none;
-    margin: 0 !important; /* Évite de pousser le bouton suivant quand elle est fermée */
-    /* ... reste de ton style de carte ... */
+/* Reset pour le tout dernier bouton pour ne pas doubler avec le margin du container */
+.toggle-subject-btn:last-of-type {
+    margin-bottom: 0 !important;
 }
 
-/* Quand elle est active, on lui redonne de l'espace */
+.toggle-subject-btn:hover {
+    background: var(--accent) !important;
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+/* LA CARTE : Correction de l'affichage */
+.subject-card {
+    display: none;
+    width: 95% !important;
+    max-width: 1200px;
+    background: rgba(26, 26, 26, 0.98) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    /* La carte s'insère dans le flux sans casser le rythme */
+    margin: -10px 0 25px 0 !important; 
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+    z-index: 50;
+}
+
 .subject-card.active {
     display: block !important;
-    margin: 10px 0 20px 0 !important; 
     opacity: 1;
     transform: translateY(0);
 }
 
-
-.toggle-subject-btn:hover {
-    background: var(--accent) !important;
-    transform: translateX(10px); /* Petit décalage vers la droite au survol */
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
-}
-
-
-
-/* --- DESIGN INTERNE DES CARTES --- */
+/* --- DESIGN INTERNE (CONSERVÉ) --- */
 
 .subject-header {
     display: flex;
@@ -1163,9 +1166,7 @@ footer {
     transition: 0.2s;
 }
 
-.close-section-btn:hover {
-    background: #ef4444;
-}
+.close-section-btn:hover { background: #ef4444; }
 
 .download-link-btn {
     display: inline-flex;
