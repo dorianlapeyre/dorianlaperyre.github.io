@@ -1001,25 +1001,28 @@ footer {
 
 
 /* ==========================================================================
-   12. AGENCEMENT PCSI : VERSION NETTOYÉE ET CORRIGÉE
-   ========================================================================== */
-
-/* ==========================================================================
    12. AGENCEMENT PCSI : VERSION HARMONISÉE
+   ========================================================================== */
+/* ==========================================================================
+   12. AGENCEMENT PCSI : CORRECTION ALIGNEMENT BOUTONS
    ========================================================================== */
 
 .subjects-container {
     display: flex !important;
     flex-direction: column !important;
-    gap: 20px !important;
-    margin: 30px 0 !important;
+    /* On réduit le gap si nécessaire, ou on le garde à 20px selon ton envie */
+    gap: 20px !important; 
+    margin: 20px 0 !important;
     width: 100% !important;
-    /* On utilise stretch pour que tous les boutons aient la même largeur par défaut */
     align-items: stretch !important; 
 }
 
+/* Reset chirurgical pour éviter que le 1er bouton soit différent des autres */
+.subjects-container > *:first-child {
+    margin-top: 0 !important;
+}
+
 .toggle-subject-btn {
-    /* Sécurité pour forcer le même comportement sur tous les boutons */
     box-sizing: border-box !important;
     flex: none !important; 
     
@@ -1027,12 +1030,11 @@ footer {
     border: 1px solid rgba(79, 70, 229, 0.3) !important;
     color: white !important;
     
-    /* Largeur fixe par rapport au parent */
+    /* Largeur fixe demandée */
     width: 90% !important; 
     max-width: 600px;
-    margin-left: 0 !important;
+    margin: 0 !important; /* On force 0 partout, le gap gère l'espace */
     
-    /* On harmonise la hauteur : min-height au lieu de height */
     min-height: 60px !important;  
     padding: 15px 25px !important;
     
@@ -1048,37 +1050,29 @@ footer {
     text-align: center;
 }
 
+/* On s'assure que la carte (même cachée) ne crée pas de vide blanc */
+.subject-card {
+    display: none;
+    margin: 0 !important; /* Évite de pousser le bouton suivant quand elle est fermée */
+    /* ... reste de ton style de carte ... */
+}
+
+/* Quand elle est active, on lui redonne de l'espace */
+.subject-card.active {
+    display: block !important;
+    margin: 10px 0 20px 0 !important; 
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 .toggle-subject-btn:hover {
     background: var(--accent) !important;
     transform: translateX(10px); /* Petit décalage vers la droite au survol */
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
 }
 
-/* LA CARTE : S'affiche sous le bouton cliqué */
-.subject-card {
-    display: none;
-    width: 95% !important;
-    max-width: 1200px;
-    background: rgba(26, 26, 26, 0.98) !important;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 40px;
-    margin: 10px 0 30px 0; /* Petit espace sous le bouton */
-    box-sizing: border-box;
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    position: relative;
-    z-index: 50;
-}
 
-/* État quand la carte est ouverte */
-.subject-card.active {
-    display: block !important;
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* --- DESIGN INTERNE DES CARTES --- */
 
